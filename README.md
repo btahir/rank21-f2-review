@@ -9,6 +9,9 @@ repository, replayable from source in about a minute with only Python and a C++ 
 reviewed by a human mathematician, has not been submitted anywhere, and its novelty has not been formally established.
 See [Claim status](docs/CLAIM_STATUS.md) for the exact boundary.
 
+**If you just want to read the paper:** [paper/main.pdf](paper/main.pdf) (11 pages). The argument is in Sections 2 to 5;
+the 110 premises are listed in the appendix.
+
 ## The problem in plain language
 
 Multiplying two 3×3 matrices the schoolbook way uses 27 scalar multiplications. Laderman (1976) showed that 23 suffice.
