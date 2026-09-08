@@ -1,0 +1,42 @@
+{
+  "published_inputs": [
+    {
+      "file": "evidence/published/UPSTREAM_LICENSE",
+      "sha256": "794ce2b576fd84cc76447890276397dbae2e9fdbb4bfc2b07928aa9aa5143647",
+      "bytes": 1068
+    },
+    {
+      "file": "evidence/published/upstream-certificate.btp",
+      "sha256": "4e824eb13c235e69045881d173d8ababe622421055a238005afce413aabe3289",
+      "bytes": 33013656
+    },
+    {
+      "file": "evidence/published/upstream-certificate.pb.txt",
+      "sha256": "25595a883ce877eecd802139ff4e07646e154b2797ad6fe7f9ec737ab0c6135d",
+      "bytes": 115056
+    }
+  ],
+  "upstream_commit": "0ab0562f2fb5430e3ce16035e5882720b5bb613b",
+  "upstream_repository": "https://github.com/wcgbg/tensor-rank-lower-bound",
+  "upstream_license": "MIT",
+  "certificate_url": "https://media.githubusercontent.com/media/wcgbg/tensor-rank-lower-bound/0ab0562f2fb5430e3ce16035e5882720b5bb613b/certs/matrix/cert_matrix_q02_n333.btp",
+  "local_code_provenance": [
+    {
+      "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/002-published-cone/published_checker.py",
+      "sha256": "e0c4424b2700af076783664b5e59345e178fc7e01a889a50e617d4ce153c48ac"
+    },
+    {
+      "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/005-fast-published-replay/fast_verifier.py",
+      "sha256": "48d28fd51f12d7abff6e85b90bcfe71282dab024a6f6bc21316d5cfad170a5dd"
+    },
+    {
+      "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/005-fast-published-replay/native_checker.cpp",
+      "sha256": "c0c7328d229f16208474520517568c22d606cd8ab4da8f75cb1bc24add4528b7"
+    },
+    {
+      "original_campaign_path": "rounds/004/audits/global-rank1/proof_core.py",
+      "sha256": "3fd56e39087633a1971959eab091c4136f73892cefb44f21be9f52feaea00eb3"
+    }
+  ],
+  "adaptations": "published_checker removed original side-effecting main; fast_verifier accepts runtime library location and imports sibling module. Native mathematical source and Fraction count checker are unchanged."
+}

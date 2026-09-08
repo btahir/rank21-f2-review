@@ -1,0 +1,33 @@
+{
+  "scope": "Recorded packaging checks; rerun commands for mathematical verification. This report is not a premise.",
+  "published": {
+    "passed": true,
+    "mode": "published",
+    "published_entries_replayed": 496,
+    "global_published_lower_bound": 20,
+    "strengthened_restricted_premises_replayed": false,
+    "full_rank21_proof_replayed": false,
+    "seconds": 35.82872516597854
+  },
+  "compact": {
+    "passed": true,
+    "nodes": 9683,
+    "leaves": 4845,
+    "premises": 110,
+    "premises_replayed": false
+  },
+  "independent_fraction_counts": {
+    "passed": true,
+    "cases": 7,
+    "geometry_replayed": false,
+    "premises_replayed": false
+  },
+  "mathematical_controls_rejected": [
+    "missing_premise",
+    "weakened_premise",
+    "missing_tree_branch",
+    "empty_leaf_dual"
+  ],
+  "platform_tested": "macOS local; Python standard-library modes and local C++17 compilation",
+  "full_rank21_portable_replay": false
+}

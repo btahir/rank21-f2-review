@@ -1,0 +1,17 @@
+{
+  "upstream": {
+    "commit": "0ab0562f2fb5430e3ce16035e5882720b5bb613b",
+    "archive": {
+      "url": "https://media.githubusercontent.com/media/wcgbg/tensor-rank-lower-bound/0ab0562f2fb5430e3ce16035e5882720b5bb613b/certs/matrix/cert_matrix_q02_n333.btp",
+      "bytes": 33013656,
+      "sha256": "4e824eb13c235e69045881d173d8ababe622421055a238005afce413aabe3289"
+    },
+    "license": {
+      "url": "https://raw.githubusercontent.com/wcgbg/tensor-rank-lower-bound/0ab0562f2fb5430e3ce16035e5882720b5bb613b/LICENSE",
+      "sha256": "794ce2b576fd84cc76447890276397dbae2e9fdbb4bfc2b07928aa9aa5143647"
+    },
+    "copied_checker_sha256": "e0c4424b2700af076783664b5e59345e178fc7e01a889a50e617d4ce153c48ac"
+  },
+  "license": "MIT",
+  "scope": "Attribution for the source catalog whose listed bounds are premises; original certificate archive not bundled or replayed."
+}

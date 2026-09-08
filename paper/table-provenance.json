@@ -1,0 +1,12 @@
+{
+  "premise_count": 110,
+  "raised_over_pinned_published": [
+    70,
+    423,
+    486,
+    488,
+    494
+  ],
+  "premises_sha256": "02db837d377ba72f6707a190d1feb5f4ec5519d8daf84d0d58297aaf8f149b43",
+  "table_encoding": "Decimal 9-bit row-major matrices; empty basis means zero dual subspace; dimK=9-len(H basis). P means no greater than pinned published bound; R means greater. Neither class replayed by compact checker."
+}

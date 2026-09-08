@@ -1,0 +1,156 @@
+[
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/002-published-cone/certificate.json",
+    "original_sha256": "37c9c4e5add636416c9e9569568d4d6d19e0ce72b3933bf835e68ab5a9069bf5",
+    "packaged_file": "evidence/restricted/002-published-cone__certificate.json.gz",
+    "packaged_sha256": "35a1af6c723896c16572fe00b07cb7e58eef8d839427ebb15b8eaea3dc35be6b",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/003-rebuild-five-dimensional/certificate.json",
+    "original_sha256": "89adf786d218781236b766b1a59da94495101ea16908fd7e9706fe5c69e86082",
+    "packaged_file": "evidence/restricted/003-rebuild-five-dimensional__certificate.json.gz",
+    "packaged_sha256": "247b34728f41e821cf8ec0e0f783471212c26a5fea5f34c3f06778e8928062ea",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/003-rebuild-five-dimensional/count-proof.json",
+    "original_sha256": "a356f08907c2fc9dbecb0a7ae70a1e1f037b0862e068a36ed9a90b3e99327527",
+    "packaged_file": "evidence/restricted/003-rebuild-five-dimensional__count-proof.json.gz",
+    "packaged_sha256": "72e4f77042c7f35a55d1a3f3c7fe2440d1c67d469ce5317d5ef1cbc2d40d15d2",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/004-six-dimensional/geometry-423.json",
+    "original_sha256": "fa6f85467dceaa3fac4ccde3337529a28eccf9f0eb64c1102adf28023bae973e",
+    "packaged_file": "evidence/restricted/004-six-dimensional__geometry-423.json.gz",
+    "packaged_sha256": "322dd8205c911965eb79175cd4e2fea007f40491b6c0b66afae488a3a2993d3b",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/004-six-dimensional/six-count-proof-423.json",
+    "original_sha256": "970653747692b4f9dc1aaaedc7b7dc2fb132cc402d560a634032ee1f44a4dbd9",
+    "packaged_file": "evidence/restricted/004-six-dimensional__six-count-proof-423.json.gz",
+    "packaged_sha256": "4837f2e50f01564118ddcee2447b2a83fda77c0cbd8f94fb972fbdb484624f28",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/004-six-dimensional/geometry-444.json",
+    "original_sha256": "e214c2364bce9e63640f03a36e8cc8d7b05b15ce4d098b38cefbb966e36afb9f",
+    "packaged_file": "evidence/restricted/004-six-dimensional__geometry-444.json.gz",
+    "packaged_sha256": "679da141d39e15220b9fd07706cd7327359246a035ff8e2cb4825e66c71f9ad1",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/004-six-dimensional/six-count-proof-444.json",
+    "original_sha256": "e6b934d1c4e2dea7ef6f660d0a0990ce2c029b0e5024bb8c195c332ef58ab947",
+    "packaged_file": "evidence/restricted/004-six-dimensional__six-count-proof-444.json.gz",
+    "packaged_sha256": "29fd9f367955527d7e5fa79dd3ac5d9dd2815f94f06bbaae7c1ee49691efc4e5",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/geometry-486.json",
+    "original_sha256": "bc246528ef2cd5bf80386b17552bd11b99ccd22ac81e8b7dd85f2b9c5dcb7750",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__geometry-486.json.gz",
+    "packaged_sha256": "9ca6e308ac113e394db7fd25feb0d52199260061eb658ec2d88b2c99a830a3ba",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/seven-count-proof-486.json",
+    "original_sha256": "b6207c371feb04606101cfc2cd0ec48cb72cedfe2a2fd7935c16db62f7185cb4",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__seven-count-proof-486.json.gz",
+    "packaged_sha256": "122d4d2390d4723e780cb276fdddafbad9ce495c373dedc15548dc039ac05b9b",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/geometry-487.json",
+    "original_sha256": "4b098449d170c12fa5d742c6d33720260fe3a93473742df6ea993e3976c27f2e",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__geometry-487.json.gz",
+    "packaged_sha256": "67b6a087e079f2f7c66f851474891030cc8e0bf7e1ea4e757e7e2d85eada0249",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/seven-count-proof-487.json",
+    "original_sha256": "a486450e44f3f960991b6926aed8091b4c1c31e5b526cb90cf96cb5a97872498",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__seven-count-proof-487.json.gz",
+    "packaged_sha256": "8a84f7d756c1b327343ea05cb3f7adfd7a4a496b066e37246db256bdd65bfc40",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/geometry-488.json",
+    "original_sha256": "245acbcf5f4d8d9888db65cfe3bcabb1e1c66185cb0af7bb07cd4193f8b53145",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__geometry-488.json.gz",
+    "packaged_sha256": "9d996edab7e010eceff12769a2eaee6baa78d8c3ca61b16041038565d646e0e8",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/seven-count-proof-488.json",
+    "original_sha256": "8e838c2941cd3e1e11dda71522734ee9a5345296694aef02a722f85596904a8d",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__seven-count-proof-488.json.gz",
+    "packaged_sha256": "0544d554f3b640c44015a3122edf5ffcb228c9bf8823129898031009ffc03969",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/geometry-490.json",
+    "original_sha256": "8466187d55461856bebca1ea14503991f6e33719d1bb343692adee9a905e1241",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__geometry-490.json.gz",
+    "packaged_sha256": "e42449ff62f0b9b2aab12d5a6941df0a24f7425e52875bcea69bcbaf890fc784",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/seven-count-proof-490.json",
+    "original_sha256": "42f57432f2cf9a49392096c4e76a30d2c77df2544f0c80ba51a0683a03466b71",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__seven-count-proof-490.json.gz",
+    "packaged_sha256": "d2a179b23da3197f9d2c343e95f183001962761abbf955f5843818ec37a609dc",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/geometry-491.json",
+    "original_sha256": "42ccdd6d31ca7b8de8512bc8f68b0a79834a6bc6a06bf9ca84abb0659c431186",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__geometry-491.json.gz",
+    "packaged_sha256": "5b9a8192371ef3c20de68f73258c8bd48045dd6d1be9f61d3a10877950980377",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/006-seven-dimensional/seven-count-proof-491.json",
+    "original_sha256": "00d20c288255e640404cf0dfb9b4b1dc92c73cc6aa0c505e4e4812cf9cccacfc",
+    "packaged_file": "evidence/restricted/006-seven-dimensional__seven-count-proof-491.json.gz",
+    "packaged_sha256": "059d6ee6c5091caf5c15e284f8ffc015ed2874ef48d8a6f1cecd55335ca759e1",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/007-eight-dimensional/frontier-cut-final-494.json",
+    "original_sha256": "2f0514d45954da63cea84c295e9df0e9becc3e3d8c0e0e94a7b1e8c61b3a7b4c",
+    "packaged_file": "evidence/restricted/007-eight-dimensional__frontier-cut-final-494.json.gz",
+    "packaged_sha256": "7552a1f004dae9885e5b28ebe7a986cde5c94c833f72b660dfd367c848f017c3",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/007-eight-dimensional/reduced-geometry.json",
+    "original_sha256": "d20fe1c4e1111b9136d738ba7fc054936a062248e3111c5367c6d4fdded9c295",
+    "packaged_file": "evidence/restricted/007-eight-dimensional__reduced-geometry.json.gz",
+    "packaged_sha256": "a2ff4fa23982d7d9c3bf63c9e27c9867f2c1d34e3a9d4b6bb54fdf4a0a65153e",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/007-eight-dimensional/symmetry-geometry-494.json",
+    "original_sha256": "405d6120f5809872e98f56b2571ebaf745b4754c0a54d09a9b5bb2b9c09acfbc",
+    "packaged_file": "evidence/restricted/007-eight-dimensional__symmetry-geometry-494.json.gz",
+    "packaged_sha256": "3460a6e3bae67233232d6ea27330c509fa2d9046cc82e93ac9d19eecac1dc6b3",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/007-eight-dimensional/orbital-input.json",
+    "original_sha256": "de93467bf70a1ac8e3cbd08e9b5bcac71db55e73892659b6b4806125357da9a4",
+    "packaged_file": "evidence/restricted/007-eight-dimensional__orbital-input.json.gz",
+    "packaged_sha256": "5e4e69a621a4e953f9910fcd5e7946853223af27aec89cda89bc845b3deebdd4",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  },
+  {
+    "original_campaign_path": "tracks/matrix-rank-proof-recovery/experiments/007-eight-dimensional/orbital-proof.json",
+    "original_sha256": "5606ffb69644a8c12e56dabb8a3afd3a6cae081606272990b66c86aa84599a3f",
+    "packaged_file": "evidence/restricted/007-eight-dimensional__orbital-proof.json.gz",
+    "packaged_sha256": "171e4b3a0597bd3d99bb1c502d29dce60d139553b1cde48b34f949e90f3bf745",
+    "metadata_conversion": "Removed legacy provenance/status ledger fields; mathematical geometry, bounds and trees retained."
+  }
+]

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv*/
+.build/
+.cache/
+.DS_Store
+reports/local/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk

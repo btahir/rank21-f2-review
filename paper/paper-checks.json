@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "premise_rows_checked": 110,
+  "raised_premise_rows": 5,
+  "raised_indices": [
+    70,
+    423,
+    486,
+    488,
+    494
+  ],
+  "tex_overfull_boxes": 0,
+  "undefined_references": 0,
+  "pdf_pages_visualized": 11,
+  "detailed_pages_visualized": [
+    7,
+    8,
+    10
+  ],
+  "toolchain": "Tectonic 0.17.0; bundled Poppler",
+  "primary_sources": [
+    {
+      "author": "Chengu Wang",
+      "title": "Automated Lower Bounds for Bilinear Complexity over Finite Fields",
+      "version": "arXiv:2603.07280v11",
+      "version_date": "2026-08-29",
+      "url": "https://arxiv.org/html/2603.07280v11",
+      "claim_used": "Theorem 1 gives rank_F2(3x3 matrix multiplication) >= 20."
+    }
+  ],
+  "scope": "Conditional theorem under 110 explicit premises; compact verifier does not prove their lower bounds.",
+  "source_hashes": {
+    "main.tex": "ac02993fa77355939cd1477c27219d2241b03009f7a558c8002a06050048e67e",
+    "references.bib": "78c73299afeeba3010ea0529cd05d328246dfc1576d43a0935e5dc1232460a42",
+    "premises-table.tex": "08d827111cfbdd94705e86e178ad0ea55b95599e0f2cbe5c4fc8c484bef58d70",
+    "table-provenance.json": "167c6a374a92db428a9fc6e18b98c2a8fbad8c7f4ecde7295b89482d606a8b60",
+    "BUILD_NOTES.md": "6fafdd6a8b94991d4838cf0dd08462a455bd21c3d7c34dc4df171e1a0cf7df4a"
+  },
+  "documented_build_script_passed": true,
+  "final_pdf_sha256": "2499ee7047d0a7f4a445b21dc4fd381adebd8f6a1a5591dcab513e56d5ee0a77",
+  "final_pdf_bytes": 96206,
+  "final_state": "FROZEN_AFTER_DOCUMENTED_BUILD_AND_VISUAL_REVIEW"
+}

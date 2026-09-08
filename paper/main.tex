@@ -1,0 +1,336 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{url}
+\newcommand{\F}{\mathbb F_2}
+\newcommand{\V}{M_3(\F)}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\R}{\operatorname{R}_{\F}}
+\newcommand{\GL}{\operatorname{GL}_3(\F)}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ann}{\operatorname{ann}}
+\newcommand{\supp}{\operatorname{supp}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+\title{A Certificate-Based Conditional Lower Bound of 21\newline
+for $3\times3$ Matrix Multiplication over $\mathbb F_2$}
+\author{Review draft}
+\date{7 September 2026\quad---\quad{}Prepared for independent review}
+\begin{document}
+\maketitle
+\begin{abstract}
+We describe a finite, checkable reduction from 110 explicitly enumerated restricted tensor-rank lower bounds to a lower bound of 21 for the exact bilinear complexity of $3\times3$ matrix multiplication over $\mathbb F_2$. Restriction inequalities first force the first-factor forms in a hypothetical 20-term decomposition to be distinct and singular. The remaining cases are excluded using two direct restrictions and seven exact counting certificates, comprising 9,683 nodes and 4,845 leaves. A portable Python checker rederives every retained counting inequality, checks physical tensor symmetries, enumerates all 43,071 unordered rank-two pairs, and verifies exact branch and rational certificates. Crucially, that checker \emph{assumes} the 110 restricted-rank premises: it does not replay their original proofs. The conditional theorem established by the portable artifact is distinguished throughout from the broader local campaign's reported complete proof chain. This document is a review draft, not a claim of external acceptance or a novelty determination.
+\end{abstract}
+
+\section{Statement, attribution, and review boundary}
+Let $T$ be the trilinear tensor
+\[
+ T(A,B,C)=\tr(ABC),\qquad A,B,C\in\V.
+\]
+Its tensor rank equals the bilinear complexity of multiplying two $3\times3$ matrices: the nondegenerate trace pairing identifies the output matrix space with its dual.
+
+Wang's automated finite-field framework gives the lower bound
+$\R(T)\geq20$ and supplies a machine-checkable catalog of restricted problems \cite{wang2026,wangrepo}. Theorem~1 of version~11, dated 29 August 2026, states this lower bound. Laderman's 23-product construction provides an upper bound over the integers and hence over $\F$ \cite{laderman1976}. Our construction uses Wang's catalog and its restricted-bound methodology as prior work; those certificates, the published lower bound, and the general idea of computer-assisted restriction arguments are not contributions of this draft.
+
+The present artifact isolates the \emph{global counting step}. It takes a finite set of restricted lower bounds as premises, derives necessary conditions for a hypothetical 20-term decomposition, and refutes every remaining case. The definitions below make the premise boundary mathematical, rather than dependent on catalog names or success flags.
+
+Identify $\V^*$ with nine-bit matrices using the entrywise pairing
+\[
+ \langle U,A\rangle=\sum_{i,j=0}^{2} U_{ij}A_{ij}.
+\]
+An integer $u\in\{0,\dots,511\}$ encodes $U$ by
+\begin{equation}\label{eq:encoding}
+ u=\sum_{i,j=0}^{2} U_{ij}2^{3i+j}.
+\end{equation}
+For a dual subspace $H\leq\V^*$, put
+$K_H=\Ann(H)=\{A:\langle h,A\rangle=0\text{ for all }h\in H\}$,
+and let $T_H$ denote the restriction of $T$ to $K_H\times\V\times\V$.
+
+\begin{assumption}[Enumerated restricted bounds]\label{ass:premises}
+For every one of the 110 rows $(i,B_i,L_i)$ in Appendix~\ref{app:premises},
+let $H_i=\operatorname{span}_{\F}\{U(b):b\in B_i\}$, using encoding~\eqref{eq:encoding}.
+Assume $\R(T_{H_i})\geq L_i$.
+\end{assumption}
+
+\begin{theorem}[Conditional global lower bound]\label{thm:main}
+Under Assumption~\ref{ass:premises},
+\[
+ \R\bigl(\langle3,3,3\rangle\bigr)=\R(T)\geq21.
+\]
+The finite case verification in the proof is supplied by the seven counting certificates in the accompanying portable artifact.
+\end{theorem}
+
+\paragraph{What is, and is not, certified here.}
+The portable checker verifies the implication in Theorem~\ref{thm:main}. It does not certify Assumption~\ref{ass:premises}. Of its 110 listed bounds, 105 are no stronger than the pinned published catalog bounds; five exceed that pinned baseline, at indices $70,423,486,488,494$. Both classes remain explicit assumptions of the portable replay. Publication of a premise elsewhere and local records of its verification are evidence about that premise, not an execution of its proof inside this checker.
+
+The larger local campaign reports a completed chain of published-certificate replays, recovered restricted certificates, and global case checks supporting an unconditional claim. The frozen campaign record is broader than the portable reduction. A reviewer wishing to validate that unconditional claim must also inspect and independently replay the omitted restricted-bound chain. This draft does not equate a successful portable run with that stronger task, nor does it claim external peer review.
+
+\section{Restriction inequalities and the Boolean domain}
+A rank-$r$ decomposition of $T$ has the form
+\begin{equation}\label{eq:decomp}
+ T=\sum_{s=1}^{r} a_s\otimes b_s\otimes c_s,
+\end{equation}
+where each $a_s$ is identified with a coefficient matrix $U_s$. In a minimal decomposition every factor is nonzero. Define the multiplicity count
+$m(H)=|\{s:U_s\in H\}|$. Repetitions count separately at this stage.
+
+\begin{lemma}[Restriction-count inequality]\label{lem:count}
+If $\R(T_H)\geq L$, every rank-$r$ decomposition satisfies
+\begin{equation}\label{eq:count}
+ m(H)\leq r-L.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Restrict the first input to $K_H$. Every term with $U_s\in H$ vanishes, since its first factor is zero on $K_H$. The remaining $r-m(H)$ terms give a decomposition of the restriction; further vanishing or cancellation can only decrease its rank. Hence $L\leq\R(T_H)\leq r-m(H)$.
+\end{proof}
+
+The premise at index $495$ has $H_{495}=\{0\}$ and $L_{495}=20$, so it excludes ranks below 20. To obtain a contradiction, suppose henceforth that $\R(T)=20$ and choose a minimal 20-term decomposition.
+
+The three nonzero matrix-rank classes are the three orbits of singleton forms under the physical symmetries described in Section~\ref{sec:symmetry}. The hyperplane premises have singleton annihilators of matrix ranks one, two, and three at indices $492,493,494$, respectively. Their assumed bounds are at least $19,19,20$.
+
+\begin{lemma}[Distinctness and exclusion of invertible forms]\label{lem:binary}
+In the hypothetical 20-term decomposition, every nonzero first-factor form has multiplicity at most one, and every invertible first-factor form has multiplicity zero.
+\end{lemma}
+\begin{proof}
+Transport the corresponding singleton premise to any nonzero form $U$. A bound of at least 19 gives $m(\langle U\rangle)\leq1$ by Lemma~\ref{lem:count}. Over $\F$, the only nonzero vector in $\langle U\rangle$ is $U$, so repeated occurrences are excluded. If $\rk(U)=3$, the bound 20 gives $m(\langle U\rangle)\leq0$.
+\end{proof}
+
+Thus the eligible forms comprise the 49 rank-one matrices and 294 rank-two matrices, a set $\mathcal D$ of size 343. Associate a binary variable $x_U$ to each eligible form. Initially
+\[
+ x_U\in\{0,1\},\qquad \sum_{U\in\mathcal D}x_U=20.
+\]
+Boolean variables are justified by Lemma~\ref{lem:binary}; they are not an initial assumption about arbitrary tensor decompositions. In particular, the reduction would be invalid if applied unchanged to a 23-term decomposition.
+
+For a transported restriction and a set $M$ of fixed selected markers, let $F$ be the remaining eligible domain after any valid zero propagation. The corresponding row is
+\begin{equation}\label{eq:projected}
+ \sum_{U\in F\cap H}x_U\leq20-L-|M\cap H|.
+\end{equation}
+The marker contribution is subtracted exactly. A restriction that was redundant before fixing markers may cease to be redundant afterward.
+
+\section{Physical symmetries and normalization}\label{sec:symmetry}
+We use the coefficient maps
+\[
+ g_{L,R,0}(U)=LUR,\qquad g_{L,R,1}(U)=LU^{\mathsf T}R,
+ \qquad L,R\in\GL.
+\]
+These are symmetries of actual tensor decompositions, not merely permutations preserving matrix rank.
+
+\begin{lemma}[Tensor preservation]\label{lem:physical}
+Every listed coefficient map is induced by an invertible symmetry of $T$, allowing interchange of its second and third arguments in the transpose case.
+\end{lemma}
+\begin{proof}
+For $g_{L,R,0}$, make the input changes
+\[
+ A'=L^{\mathsf T}AR^{\mathsf T},\quad
+ B'=R^{-\mathsf T}B,\quad C'=CL^{-\mathsf T}.
+\]
+Cyclic trace gives $\tr(A'B'C')=\tr(ABC)$, and
+$\langle U,A'\rangle=\langle LUR,A\rangle$.
+For $g_{L,R,1}$, use
+\[
+ A'=RA^{\mathsf T}L,\quad B'=L^{-1}C^{\mathsf T},\quad
+ C'=B^{\mathsf T}R^{-1}.
+\]
+Then $\tr(A'B'C')=\tr(A^{\mathsf T}C^{\mathsf T}B^{\mathsf T})=\tr(ABC)$ and
+$\langle U,A'\rangle=\langle LU^{\mathsf T}R,A\rangle$.
+All changes are invertible. Applying them to a pure-tensor sum, with the indicated factor interchange, preserves its number of terms.
+\end{proof}
+
+In particular, restriction ranks are invariant under $H\mapsto g(H)$. If the corresponding first-input change is $S$, then $K_{g(H)}=S^{-1}(K_H)$; the invertible changes on the other factors, and their interchange when needed, preserve the restricted tensor rank. Thus the bounds may be transported as used in Lemma~\ref{lem:binary}.
+
+There are $168$ invertible binary $3\times3$ matrices, so the implementation enumerates $2\cdot168^2=56,448$ actions. Rank-one forms constitute one orbit, as do rank-two forms. These statements are checked by explicit finite enumeration. Completeness of a large stabilizer is unnecessary for the branch rule below: a smaller family of valid witness maps can still establish its coverage.
+
+The 294 rank-two forms give $\binom{294}{2}=43,071$ unordered pairs. The checker enumerates the images of the seven representatives in Table~\ref{tab:orbits}, verifies disjointness, and compares their union against the entire independently enumerated pair set. An orbit-size sum alone would not establish coverage.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{crrrl}
+\toprule
+Case & Pair (decimal encoding) & Orbit size & Kernel index & Exclusion \\
+\midrule
+8  & $(10,11)$  & 441    & 479 & counting certificate \\
+9  & $(10,12)$  & 3,528  & 481 & counting certificate \\
+10 & $(10,19)$  & 294    & 484 & counting certificate \\
+11 & $(10,20)$  & 7,056  & 485 & counting certificate \\
+12 & $(10,68)$  & 3,528  & 486 & direct bound 19 \\
+13 & $(10,96)$  & 14,112 & 488 & direct bound 19 \\
+14 & $(10,258)$ & 14,112 & 489 & counting certificate \\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive rank-two pair normalization. Kernel indices refer to canonical restrictions; the direct cases have the displayed pair itself as annihilator basis.}
+\label{tab:orbits}
+\end{table}
+
+\section{Exhaustion of the decomposition cases}\label{sec:cases}
+Split according to the number of rank-two forms among the 20 selected first factors.
+
+\paragraph{No rank-two form.}
+All selected forms have rank one. Normalize one of them to the matrix encoded by $1$. The first counting certificate has 49 variables, target 20, and this selected initial marker. No second rank-one marker is presumed.
+
+\paragraph{Exactly one rank-two form.}
+Normalize that form to $10$. Fix its count to one and retain all 49 rank-one variables, now with target 19. Every restriction row uses the subtraction in~\eqref{eq:projected}; ignoring the fixed rank-two contribution would change the problem. The second certificate excludes this case.
+
+\paragraph{At least two rank-two forms.}
+Select any two and normalize their unordered pair to Table~\ref{tab:orbits}. This imposes no prohibition on additional rank-two forms. For cases 12 and 13, the corresponding annihilators are
+\[
+ H_{486}=\operatorname{span}\{10,68\},\qquad
+ H_{488}=\operatorname{span}\{10,96\}.
+\]
+Both restricted ranks are assumed at least 19. The two fixed forms lie in the annihilator, so restriction kills at least two terms of the 20-term decomposition and leaves at most 18, a contradiction.
+
+For cases 8, 9, 10, 11 and 14, all other singular nonzero forms remain initially eligible. Valid saturation steps remove some variables: if the already selected forms attain a row's capacity, all remaining variables in its support must be zero. Each such step is stored with its source restriction. The resulting domains have sizes $124,144,124,88,64$, respectively, with target 18 in every case. Each resulting certificate excludes every actual decomposition in that case.
+
+\section{Exact certificates and branch coverage}\label{sec:certificates}
+A node carries a partial binary assignment, represented by disjoint selected, zero, and free sets. Its necessary rows have form
+$\sum_{i\in S_j}x_i\leq b_j$, with integer $b_j\geq0$. A stored propagation step is accepted only when the selected count in $S_j$ equals $b_j$ and at least one free variable is forced to zero.
+
+\subsection{Leaves}
+Three leaf formats are permitted.
+\begin{enumerate}[leftmargin=*]
+\item A \emph{row violation} identifies a row whose already selected count exceeds its capacity.
+\item A \emph{capacity leaf} shows that the selected and free variables together contain fewer than the case target $q$.
+\item A \emph{rational leaf} supplies nonnegative rational row multipliers $y_j$, upper-bound multipliers $z_i$, and lower-bound multipliers $w_i$.
+\end{enumerate}
+For the last format, let $\ell_i,u_i\in\{0,1\}$ encode the current variable bounds. The verifier checks, exactly,
+\begin{align}
+ \sum_{j:i\in S_j}y_j+z_i-w_i&\geq1\quad\text{for every }i,\label{eq:dualcoeff}\\
+ B:=\sum_j y_jb_j+\sum_i z_iu_i-\sum_i w_i\ell_i&<q.\label{eq:dualrhs}
+\end{align}
+It also verifies that $B$ equals the rational value written in the certificate.
+
+\begin{lemma}[Rational leaf soundness]
+Conditions~\eqref{eq:dualcoeff}--\eqref{eq:dualrhs} exclude a nonnegative assignment of total $q$ satisfying the rows and current variable bounds.
+\end{lemma}
+\begin{proof}
+Add the row inequalities with weights $y_j$, the upper bounds with weights $z_i$, and the negated lower bounds with weights $w_i$. The resulting coefficient of each $x_i$ is at least one. Because $x_i\geq0$, the weighted left side is at least $\sum_i x_i$, while its right side is $B<q$.
+\end{proof}
+
+The portable checker clears denominators using an integer least common multiple. Separately implemented local replays used exact rational arithmetic. Floating-point LP output is used only in discovery: acceptance of a leaf depends on the integer/rational inequalities above, not on a solver status or tolerance.
+
+\subsection{Symmetry branches}
+An internal node provides a nonempty set $O$ of free variable positions, a representative $r\in O$, and, for \emph{every} $i\in O$, a physical symmetry $g_i$ that sends $i$ to $r$. Each witness must preserve the selected and zero sets, the eligible domain, and the fixed marker set. There are two children:
+\[
+ \text{none: }x_i=0\ (i\in O),\qquad
+ \text{some: }x_r=1.
+\]
+\begin{lemma}[Coverage of a symmetry branch]\label{lem:branch}
+If both children contain no actual tensor decomposition in the specified case, neither does their parent.
+\end{lemma}
+\begin{proof}
+A parent decomposition either selects no element of $O$, in which case it belongs to the first child, or selects some $i\in O$. Apply the supplied physical map $g_i$ to the latter decomposition. The result is a decomposition of the same tensor, preserves every fixed assignment and the case, and selects $r$. It therefore belongs to the second child, also impossible.
+\end{proof}
+
+\begin{remark}[The row-subset boundary]\label{rem:subset}
+This argument concerns \emph{actual tensor decompositions}. A transformed decomposition satisfies every retained inequality because every such inequality is universally valid for the tensor. It is not necessary for the retained row subset itself to be invariant under the witness maps. By contrast, a claim that symmetry branching refutes the entire relaxed binary constraint system would require preservation of that system's feasible set. We do not make that stronger claim.
+\end{remark}
+
+Missing children, missing orbit witnesses, invalid physical maps, and omitted assignments invalidate a certificate. Merely visiting many nodes or reaching a time limit gives no exclusion. The completed finite trees can be checked by induction using the leaf rules and Lemma~\ref{lem:branch}.
+
+\section{Finite verification record and proof of the theorem}
+Table~\ref{tab:certificates} gives the seven completed trees after removing rows not cited by a leaf or propagation step. Row and action identifiers were renumbered; rational weights, node structure and witness coverage were retained.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+Case & Variables & Retained rows & Nodes & Leaves \\
+\midrule
+All rank one & 49 & 941 & 1,453 & 727 \\
+One rank two & 49 & 778 & 333 & 167 \\
+Pair 8 & 124 & 1,170 & 459 & 230 \\
+Pair 9 & 144 & 2,667 & 899 & 450 \\
+Pair 10 & 124 & 2,417 & 2,639 & 1,320 \\
+Pair 11 & 88 & 635 & 413 & 207 \\
+Pair 14 & 64 & 880 & 3,487 & 1,744 \\
+\midrule
+Total & & 9,488 & 9,683 & 4,845 \\
+\bottomrule
+\end{tabular}
+\caption{Exact global counting certificates in the portable payload. An additional 971 initial zero-propagation witnesses determine the pair-case domains.}
+\label{tab:certificates}
+\end{table}
+
+\paragraph{Geometry reconstruction.}
+Every retained row gives an assumed catalog bound, an annihilator basis, and an action chain. The checker forms the annihilator span, applies the exact binary matrix actions, recomputes its intersection with the variable domain, and subtracts selected-marker membership. It compares the resulting support and capacity with the supplied row. If a stored row uses a weaker bound than the listed premise, that weakening is checked explicitly. Source row numbers and original hashes support provenance; they do not replace this reconstruction.
+
+All 3,427 distinct physical actions retained by rows or branches are checked on 81 first-factor coefficient pairings and 729 basis triples of the trace tensor. The algebra in Lemma~\ref{lem:physical} justifies the whole enumerated normalization group. The two direct restrictions and exhaustive pair coverage are also checked. The published/recovered lower-bound proofs are not part of these computations.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Assumption~\ref{ass:premises} supplies the unrestricted lower bound 20 and every restriction used in Lemmas~\ref{lem:count} and~\ref{lem:binary}. A hypothetical minimal 20-term decomposition therefore has 20 distinct singular first factors. Section~\ref{sec:cases} exhausts the possible numbers of rank-two forms. The two direct pair cases contradict their rank-19 premises. For the other seven cases, the finite verification record establishes valid necessary rows, initial assignments, physical witness maps, and sound leaves; induction through each completed tree excludes an actual decomposition in that case. No 20-term decomposition remains. Since smaller ranks were already excluded, $\R(T)\geq21$.
+\end{proof}
+
+\section{Reproduction and evidence boundaries}\label{sec:reproduction}
+The default portable reduction contains a standard-library Python checker, a compressed JSON payload, a readable premise list, source provenance and integrity manifests. Its replay requires no LP solver, custom native binary, network access, or original campaign path. From the repository root, run:
+\begin{verbatim}
+python3 verification/verify.py
+\end{verbatim}
+Python 3.10 or newer is required. The checker also runs when invoked by an absolute path from another working directory. Python's assertion-disabling \texttt{-O} mode is rejected.
+
+A successful default run explicitly reports
+\begin{quote}\small\ttfamily
+lower\_bound\_premises\_replayed: false
+\end{quote}
+This is part of the intended contract, not a missing success flag. Additional entry points are:
+\begin{verbatim}
+python3 verification/verify.py --mode independent-counts
+python3 verification/verify.py --mode controls
+python3 verification/verify.py --mode published --seconds 600
+\end{verbatim}
+The published mode replays the 496-entry pinned published catalog; that separate mode requires a C++ compiler and its bundled certificate archive. It does not establish the five strengthened premises in this draft. The repository document \path{docs/VERIFICATION.md} describes the mode-specific requirements and remaining strengthened-premise integration boundary. Appendix~\ref{app:premises} and the readable \path{PREMISES.json} enumerate the assumptions. Hashes authenticate a particular artifact snapshot; they are not mathematical evidence of a lower bound by themselves.
+
+The compact package was replayed after copying and extracting it into a renamed directory, including a run from an unrelated working directory. Malformed-input checks covered missing or weakened critical premises, changed row supports and capacities, singular actions, omitted pair cases, missing markers and branches, incomplete witness coverage, false rational leaves, and damaged compressed data. A separate internal check reconstructed the 9,488 rows and 971 initial propagations with scalar geometry and replayed all seven trees using a different exact-arithmetic implementation. Some code and prior premise infrastructure are shared across the broader campaign; these are internal cross-checks, not external peer review or formal verification of the Python interpreter.
+
+The broader campaign additionally checked a known Laderman decomposition coefficient-by-coefficient over the integers and tested its compatibility with restriction inequalities at length 23. Such positive controls help detect inconsistent counting or unjustified Boolean assumptions. They do not establish the restricted lower bounds.
+
+\paragraph{Provenance.}
+The pinned upstream catalog comes from Wang's repository. Its commit and certificate archive SHA-256 are:
+\begin{quote}\small\ttfamily
+commit: 0ab0562f2fb5430e3ce16035e5882720b5bb613b\\
+sha256: 4e824eb13c235e69045881d173d8ababe622421055a238005afce413aabe3289
+\end{quote}
+The upstream MIT notice is preserved. Catalog identifiers in this draft refer to that pinned instance, not to an unspecified future repository version. The appendix also gives the actual annihilators, so the premises remain meaningful without relying on identifiers.
+
+\section{Limitations and review requests}
+The result concerns exact bilinear tensor rank over $\F$ for one matrix format. It does not establish border rank, a bound over arbitrary fields, the exact rank, an improved asymptotic exponent, or a faster multiplication algorithm. The known upper bound 23 is unchanged.
+
+The principal unresolved task \emph{for a reviewer of the portable package} is to verify all restricted-rank premises from their original certificates and recovered dependencies. The larger campaign reports doing so locally; that report must not be substituted for the omitted replay. Review should also scrutinize the dual-coordinate convention, physical transpose action, direct restrictions, exact leaf rules, and the distinction in Remark~\ref{rem:subset}. The project has not established priority against all unpublished work, secured external acceptance, or demonstrated prize eligibility or commercial value.
+
+\paragraph{AI-assistance disclosure.}
+OpenAI Codex agents substantially assisted literature lookup, programming, certificate generation, mathematical exposition, and internal review in this project. Separate agents performed some separately implemented checks. Their organizational separation does not imply statistical independence, external expertise, or a replacement for human mathematical review. The author field is deliberately neutral pending confirmation of human authorship, responsibility, and affiliations. No affiliation or external endorsement is asserted.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\appendix
+\section{The 110 explicit restricted-rank premises}\label{app:premises}
+Each row states $\R(T_{H_i})\geq L_i$, with $H_i$ spanned over $\F$ by the displayed decimal matrix encodings. The empty basis gives $H_i=\{0\}$, so $K_{H_i}=\V$. The column $\dim K_{H_i}$ equals nine minus the number of displayed independent basis vectors. This table is generated from the portable payload's readable premise list.
+
+The final column records provenance relative to the pinned published catalog: P means the assumed bound is no greater than that catalog's bound; R means it is greater. There are 105 P rows and five R rows. \emph{Neither label changes the assumption boundary: the compact checker does not replay either class of bound proofs.}
+
+{\small
+\setlength{\tabcolsep}{5pt}
+\begin{longtable}{rrp{0.58\linewidth}rc}
+\caption{Complete premise list for Theorem~\ref{thm:main}.}\label{tab:premises}\\
+\toprule
+Index & $\dim K$ & Basis encodings for $H$ & $L$ & Class \\
+\midrule
+\endfirsthead
+\toprule
+Index & $\dim K$ & Basis encodings for $H$ & $L$ & Class \\
+\midrule
+\endhead
+\midrule\multicolumn{5}{r}{Continued on next page}\\\endfoot
+\bottomrule\endlastfoot
+\input{premises-table.tex}
+\end{longtable}
+}
+\end{document}

@@ -1,0 +1,1110 @@
+{
+  "scope": "Readable mirror of the assumed restricted-rank premises embedded in payload.json.gz. These bound proofs are not included or replayed.",
+  "premises": [
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20,
+        32,
+        68,
+        128,
+        256
+      ],
+      "assumed_lower_bound": 9,
+      "index": 3
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        16,
+        68,
+        160,
+        256
+      ],
+      "assumed_lower_bound": 12,
+      "index": 10
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20,
+        32,
+        68,
+        128
+      ],
+      "assumed_lower_bound": 12,
+      "index": 11
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20,
+        96,
+        128,
+        256
+      ],
+      "assumed_lower_bound": 12,
+      "index": 14
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        32,
+        68,
+        128,
+        262
+      ],
+      "assumed_lower_bound": 14,
+      "index": 17
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        4,
+        8,
+        80,
+        128
+      ],
+      "assumed_lower_bound": 12,
+      "index": 23
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        16,
+        68,
+        160
+      ],
+      "assumed_lower_bound": 15,
+      "index": 29
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20,
+        32,
+        68
+      ],
+      "assumed_lower_bound": 15,
+      "index": 31
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20,
+        96,
+        128
+      ],
+      "assumed_lower_bound": 15,
+      "index": 35
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        12,
+        32,
+        132,
+        272
+      ],
+      "assumed_lower_bound": 14,
+      "index": 55
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        68,
+        160,
+        256
+      ],
+      "assumed_lower_bound": 14,
+      "index": 63
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        68,
+        160,
+        260
+      ],
+      "assumed_lower_bound": 15,
+      "index": 65
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        96,
+        164,
+        256
+      ],
+      "assumed_lower_bound": 15,
+      "index": 69
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        96,
+        164,
+        258
+      ],
+      "assumed_lower_bound": 14,
+      "index": 70
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        32,
+        68,
+        258
+      ],
+      "assumed_lower_bound": 15,
+      "index": 72
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        96,
+        160,
+        260
+      ],
+      "assumed_lower_bound": 15,
+      "index": 80
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        16,
+        68
+      ],
+      "assumed_lower_bound": 15,
+      "index": 93
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20,
+        32
+      ],
+      "assumed_lower_bound": 15,
+      "index": 95
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20,
+        68
+      ],
+      "assumed_lower_bound": 16,
+      "index": 96
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        32,
+        84
+      ],
+      "assumed_lower_bound": 15,
+      "index": 101
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        32,
+        132
+      ],
+      "assumed_lower_bound": 15,
+      "index": 103
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        96,
+        256
+      ],
+      "assumed_lower_bound": 14,
+      "index": 111
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        96,
+        272
+      ],
+      "assumed_lower_bound": 15,
+      "index": 112
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        12,
+        32,
+        132
+      ],
+      "assumed_lower_bound": 15,
+      "index": 118
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        12,
+        32,
+        256
+      ],
+      "assumed_lower_bound": 14,
+      "index": 119
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        32,
+        84,
+        408
+      ],
+      "assumed_lower_bound": 15,
+      "index": 144
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        68,
+        258
+      ],
+      "assumed_lower_bound": 16,
+      "index": 150
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        96,
+        164
+      ],
+      "assumed_lower_bound": 16,
+      "index": 152
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        32,
+        68
+      ],
+      "assumed_lower_bound": 16,
+      "index": 156
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        32,
+        128
+      ],
+      "assumed_lower_bound": 15,
+      "index": 157
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        32,
+        192
+      ],
+      "assumed_lower_bound": 15,
+      "index": 158
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        128,
+        262
+      ],
+      "assumed_lower_bound": 15,
+      "index": 187
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        128,
+        324
+      ],
+      "assumed_lower_bound": 15,
+      "index": 190
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        132,
+        262
+      ],
+      "assumed_lower_bound": 16,
+      "index": 194
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        132,
+        340
+      ],
+      "assumed_lower_bound": 16,
+      "index": 201
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16,
+        36,
+        192,
+        334
+      ],
+      "assumed_lower_bound": 15,
+      "index": 220
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16,
+        98,
+        140,
+        256
+      ],
+      "assumed_lower_bound": 15,
+      "index": 231
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "assumed_lower_bound": 14,
+      "index": 248
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        16
+      ],
+      "assumed_lower_bound": 15,
+      "index": 250
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        20
+      ],
+      "assumed_lower_bound": 16,
+      "index": 251
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        68
+      ],
+      "assumed_lower_bound": 16,
+      "index": 253
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        8,
+        96
+      ],
+      "assumed_lower_bound": 16,
+      "index": 255
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        12,
+        96
+      ],
+      "assumed_lower_bound": 16,
+      "index": 261
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        12,
+        132
+      ],
+      "assumed_lower_bound": 17,
+      "index": 262
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        12,
+        256
+      ],
+      "assumed_lower_bound": 16,
+      "index": 264
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        32,
+        84
+      ],
+      "assumed_lower_bound": 16,
+      "index": 267
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        32,
+        264
+      ],
+      "assumed_lower_bound": 16,
+      "index": 269
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        32,
+        320
+      ],
+      "assumed_lower_bound": 15,
+      "index": 270
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        80,
+        160
+      ],
+      "assumed_lower_bound": 16,
+      "index": 274
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        96,
+        272
+      ],
+      "assumed_lower_bound": 16,
+      "index": 276
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        96,
+        304
+      ],
+      "assumed_lower_bound": 16,
+      "index": 278
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        68
+      ],
+      "assumed_lower_bound": 17,
+      "index": 279
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        256
+      ],
+      "assumed_lower_bound": 16,
+      "index": 281
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16,
+        258
+      ],
+      "assumed_lower_bound": 17,
+      "index": 282
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        32
+      ],
+      "assumed_lower_bound": 16,
+      "index": 283
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        68
+      ],
+      "assumed_lower_bound": 17,
+      "index": 284
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        160
+      ],
+      "assumed_lower_bound": 17,
+      "index": 287
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        20,
+        258
+      ],
+      "assumed_lower_bound": 17,
+      "index": 289
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        68
+      ],
+      "assumed_lower_bound": 17,
+      "index": 290
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        128
+      ],
+      "assumed_lower_bound": 16,
+      "index": 292
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        272
+      ],
+      "assumed_lower_bound": 17,
+      "index": 295
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32,
+        384
+      ],
+      "assumed_lower_bound": 16,
+      "index": 298
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        96,
+        290
+      ],
+      "assumed_lower_bound": 17,
+      "index": 309
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        160,
+        260
+      ],
+      "assumed_lower_bound": 17,
+      "index": 315
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        160,
+        290
+      ],
+      "assumed_lower_bound": 17,
+      "index": 318
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16,
+        36,
+        196
+      ],
+      "assumed_lower_bound": 16,
+      "index": 324
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16,
+        96,
+        296
+      ],
+      "assumed_lower_bound": 16,
+      "index": 332
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        38,
+        196
+      ],
+      "assumed_lower_bound": 17,
+      "index": 353
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        96,
+        164
+      ],
+      "assumed_lower_bound": 17,
+      "index": 355
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        96,
+        290
+      ],
+      "assumed_lower_bound": 17,
+      "index": 356
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        160,
+        262
+      ],
+      "assumed_lower_bound": 17,
+      "index": 363
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        160,
+        268
+      ],
+      "assumed_lower_bound": 17,
+      "index": 366
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        224,
+        290
+      ],
+      "assumed_lower_bound": 17,
+      "index": 371
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        4
+      ],
+      "assumed_lower_bound": 15,
+      "index": 410
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        12
+      ],
+      "assumed_lower_bound": 17,
+      "index": 412
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        80
+      ],
+      "assumed_lower_bound": 17,
+      "index": 414
+    },
+    {
+      "annihilator_basis": [
+        1,
+        2,
+        96
+      ],
+      "assumed_lower_bound": 17,
+      "index": 416
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        16
+      ],
+      "assumed_lower_bound": 17,
+      "index": 417
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        32
+      ],
+      "assumed_lower_bound": 17,
+      "index": 419
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        160
+      ],
+      "assumed_lower_bound": 18,
+      "index": 423
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        258
+      ],
+      "assumed_lower_bound": 18,
+      "index": 425
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10,
+        272
+      ],
+      "assumed_lower_bound": 18,
+      "index": 426
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16,
+        36
+      ],
+      "assumed_lower_bound": 17,
+      "index": 427
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16,
+        96
+      ],
+      "assumed_lower_bound": 17,
+      "index": 428
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16,
+        258
+      ],
+      "assumed_lower_bound": 17,
+      "index": 433
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        38
+      ],
+      "assumed_lower_bound": 17,
+      "index": 435
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20,
+        100
+      ],
+      "assumed_lower_bound": 17,
+      "index": 437
+    },
+    {
+      "annihilator_basis": [
+        10,
+        19,
+        68
+      ],
+      "assumed_lower_bound": 18,
+      "index": 450
+    },
+    {
+      "annihilator_basis": [
+        10,
+        19,
+        257
+      ],
+      "assumed_lower_bound": 18,
+      "index": 451
+    },
+    {
+      "annihilator_basis": [
+        10,
+        20,
+        35
+      ],
+      "assumed_lower_bound": 18,
+      "index": 452
+    },
+    {
+      "annihilator_basis": [
+        10,
+        20,
+        68
+      ],
+      "assumed_lower_bound": 18,
+      "index": 453
+    },
+    {
+      "annihilator_basis": [
+        10,
+        20,
+        96
+      ],
+      "assumed_lower_bound": 18,
+      "index": 454
+    },
+    {
+      "annihilator_basis": [
+        10,
+        20,
+        129
+      ],
+      "assumed_lower_bound": 18,
+      "index": 455
+    },
+    {
+      "annihilator_basis": [
+        10,
+        20,
+        449
+      ],
+      "assumed_lower_bound": 18,
+      "index": 457
+    },
+    {
+      "annihilator_basis": [
+        10,
+        20,
+        450
+      ],
+      "assumed_lower_bound": 18,
+      "index": 458
+    },
+    {
+      "annihilator_basis": [
+        10,
+        68,
+        178
+      ],
+      "assumed_lower_bound": 18,
+      "index": 462
+    },
+    {
+      "annihilator_basis": [
+        10,
+        68,
+        305
+      ],
+      "assumed_lower_bound": 18,
+      "index": 466
+    },
+    {
+      "annihilator_basis": [
+        10,
+        84,
+        258
+      ],
+      "assumed_lower_bound": 18,
+      "index": 469
+    },
+    {
+      "annihilator_basis": [
+        10,
+        84,
+        259
+      ],
+      "assumed_lower_bound": 18,
+      "index": 470
+    },
+    {
+      "annihilator_basis": [
+        1,
+        10
+      ],
+      "assumed_lower_bound": 18,
+      "index": 479
+    },
+    {
+      "annihilator_basis": [
+        1,
+        16
+      ],
+      "assumed_lower_bound": 18,
+      "index": 480
+    },
+    {
+      "annihilator_basis": [
+        1,
+        20
+      ],
+      "assumed_lower_bound": 18,
+      "index": 481
+    },
+    {
+      "annihilator_basis": [
+        10,
+        19
+      ],
+      "assumed_lower_bound": 18,
+      "index": 484
+    },
+    {
+      "annihilator_basis": [
+        10,
+        20
+      ],
+      "assumed_lower_bound": 18,
+      "index": 485
+    },
+    {
+      "annihilator_basis": [
+        10,
+        68
+      ],
+      "assumed_lower_bound": 19,
+      "index": 486
+    },
+    {
+      "annihilator_basis": [
+        10,
+        96
+      ],
+      "assumed_lower_bound": 19,
+      "index": 488
+    },
+    {
+      "annihilator_basis": [
+        1
+      ],
+      "assumed_lower_bound": 19,
+      "index": 492
+    },
+    {
+      "annihilator_basis": [
+        10
+      ],
+      "assumed_lower_bound": 19,
+      "index": 493
+    },
+    {
+      "annihilator_basis": [
+        84
+      ],
+      "assumed_lower_bound": 20,
+      "index": 494
+    },
+    {
+      "annihilator_basis": [],
+      "assumed_lower_bound": 20,
+      "index": 495
+    }
+  ]
+}
