@@ -46,4 +46,4 @@ here. The observation is evidence against relying on that implementation; it is 
 3. Human mathematical review, ideally including the framework's author.
 4. Novelty and priority: Wang's v11 (29 August 2026) and the upstream README state 20; a web search on 2026-09-07
    found no published 21. Absence of a search hit is not proof of priority.
-5. Final author metadata and a license for the original material before any submission.
+5. Final author metadata on the paper before any submission (the repository itself is MIT licensed).

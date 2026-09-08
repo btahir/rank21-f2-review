@@ -109,8 +109,8 @@ The restriction catalog, certificate format, and the lower bound 20 are Chengu W
 ([paper](https://arxiv.org/abs/2603.07280), [repository](https://github.com/wcgbg/tensor-rank-lower-bound),
 pinned commit `0ab0562f`, MIT license preserved in `evidence/published/UPSTREAM_LICENSE`). Wang has not reviewed or
 endorsed this work. The strengthened bounds, global certificates, and this write-up were produced in an LLM-assisted
-research campaign, and the independent audit was also performed by an LLM. Author metadata and a license for the
-original material are still to be assigned; see [NOTICE.md](NOTICE.md).
+research campaign, and the independent audit was also performed by an LLM. The original material is released under the MIT License by Bilal Tahir
+(see [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md)); the paper's author line is still a placeholder.
 
 To rebuild the paper (requires [Tectonic](https://tectonic-typesetting.github.io/)):
 
