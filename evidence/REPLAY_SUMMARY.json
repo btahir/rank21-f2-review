@@ -1,33 +1,223 @@
 {
-  "scope": "Recorded packaging checks; rerun commands for mathematical verification. This report is not a premise.",
-  "published": {
+  "scope": "Recorded outputs of the documented commands on 2026-09-07 (macOS, Python 3.14, Apple clang). Rerun the commands for verification; this file is a record, not a premise.",
+  "full": {
     "passed": true,
-    "mode": "published",
+    "mode": "full",
     "published_entries_replayed": 496,
     "global_published_lower_bound": 20,
-    "strengthened_restricted_premises_replayed": false,
-    "full_rank21_proof_replayed": false,
-    "seconds": 35.82872516597854
+    "strengthened_restricted_premises_replayed": true,
+    "upgrades": {
+      "70": 14,
+      "206": 15,
+      "313": 17,
+      "423": 18,
+      "444": 18,
+      "486": 19,
+      "487": 19,
+      "488": 19,
+      "490": 19,
+      "491": 19,
+      "494": 20
+    },
+    "lower_bound_premises_replayed": true,
+    "full_rank21_proof_replayed": true,
+    "compact_nodes": 9683,
+    "independent_global_nodes": 9683,
+    "seconds": 53.525327957991976
+  },
+  "restricted": {
+    "passed": true,
+    "upgrades": {
+      "70": 14,
+      "206": 15,
+      "313": 17,
+      "423": 18,
+      "444": 18,
+      "486": 19,
+      "487": 19,
+      "488": 19,
+      "490": 19,
+      "491": 19,
+      "494": 20
+    },
+    "stages": [
+      {
+        "index": 70,
+        "bound": 14,
+        "method": "koszul flattening",
+        "koszul_rank": 27
+      },
+      {
+        "index": 206,
+        "bound": 15,
+        "method": "hyperplane averaging",
+        "hyperplane_bound_sum": 198
+      },
+      {
+        "index": 313,
+        "bound": 17,
+        "method": "interval-count tree",
+        "rows": 372,
+        "nodes": 7,
+        "leaves": 4,
+        "caps_source": "established bounds",
+        "upgraded_entries_cited_by_leaves": [
+          70
+        ],
+        "seconds": 0.01
+      },
+      {
+        "index": 423,
+        "bound": 18,
+        "method": "interval-count tree",
+        "rows": 2823,
+        "nodes": 7,
+        "leaves": 4,
+        "caps_source": "published bounds only",
+        "upgraded_entries_cited_by_leaves": [],
+        "seconds": 0.07
+      },
+      {
+        "index": 444,
+        "bound": 18,
+        "method": "interval-count tree",
+        "rows": 2823,
+        "nodes": 413,
+        "leaves": 207,
+        "caps_source": "published bounds only",
+        "upgraded_entries_cited_by_leaves": [],
+        "seconds": 0.11
+      },
+      {
+        "index": 486,
+        "bound": 19,
+        "method": "interval-count tree",
+        "rows": 29210,
+        "nodes": 13,
+        "leaves": 7,
+        "caps_source": "established bounds",
+        "upgraded_entries_cited_by_leaves": [],
+        "seconds": 1.31
+      },
+      {
+        "index": 487,
+        "bound": 19,
+        "method": "interval-count tree",
+        "rows": 29210,
+        "nodes": 9,
+        "leaves": 5,
+        "caps_source": "established bounds",
+        "upgraded_entries_cited_by_leaves": [],
+        "seconds": 1.31
+      },
+      {
+        "index": 488,
+        "bound": 19,
+        "method": "interval-count tree",
+        "rows": 29210,
+        "nodes": 31,
+        "leaves": 16,
+        "caps_source": "established bounds",
+        "upgraded_entries_cited_by_leaves": [
+          70
+        ],
+        "seconds": 1.31
+      },
+      {
+        "index": 490,
+        "bound": 19,
+        "method": "interval-count tree",
+        "rows": 29210,
+        "nodes": 21,
+        "leaves": 11,
+        "caps_source": "established bounds",
+        "upgraded_entries_cited_by_leaves": [
+          70
+        ],
+        "seconds": 1.31
+      },
+      {
+        "index": 491,
+        "bound": 19,
+        "method": "interval-count tree",
+        "rows": 29210,
+        "nodes": 1,
+        "leaves": 1,
+        "caps_source": "established bounds",
+        "upgraded_entries_cited_by_leaves": [],
+        "seconds": 1.31
+      },
+      {
+        "index": 494,
+        "bound": 20,
+        "method": "binary orbital tree",
+        "active_forms": 49,
+        "rows": 47884,
+        "automorphisms": 336,
+        "nodes": 169,
+        "leaves": 85,
+        "seconds": 4.03
+      }
+    ]
   },
   "compact": {
     "passed": true,
     "nodes": 9683,
     "leaves": 4845,
     "premises": 110,
-    "premises_replayed": false
+    "premises_replayed_in_this_mode": false
   },
-  "independent_fraction_counts": {
+  "independent_counts": {
     "passed": true,
-    "cases": 7,
-    "geometry_replayed": false,
-    "premises_replayed": false
+    "cases": 7
   },
-  "mathematical_controls_rejected": [
+  "controls_rejected": [
     "missing_premise",
     "weakened_premise",
     "missing_tree_branch",
     "empty_leaf_dual"
   ],
-  "platform_tested": "macOS local; Python standard-library modes and local C++17 compilation",
-  "full_rank21_portable_replay": false
+  "audit_controls": {
+    "mutation_controls_rejected": 17,
+    "accepted": 0,
+    "minimal_upgrade_dependencies": {
+      "70": "published bounds only (Koszul flattening)",
+      "206": "published bounds only (Koszul ranks computed inline)",
+      "313": [
+        70,
+        206
+      ],
+      "423": "published bounds only",
+      "444": "published bounds only",
+      "486": [
+        423
+      ],
+      "487": [
+        423,
+        444
+      ],
+      "488": [
+        70,
+        423,
+        444
+      ],
+      "490": [
+        70,
+        444
+      ],
+      "491": [
+        444
+      ],
+      "494": [
+        70,
+        487,
+        488,
+        490,
+        491
+      ]
+    }
+  },
+  "test_release": {
+    "passed": true
+  }
 }

@@ -338,7 +338,7 @@
     "patterns": {
       "personal_absolute_path": "/(?:Users|home|private/var)/[^\\s\"<>]+",
       "credential_token": "(?:github_pat_[A-Za-z0-9_]+|ghp_[A-Za-z0-9]{20,}|sk-proj-[A-Za-z0-9_-]+|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)",
-      "local_identity": "bilaltahir|throwaway-notes|\\.codex/memories"
+      "local_identity": "<local-account-name>|throwaway-notes|\\.codex/memories"
     },
     "hits": [],
     "limitation": "Targeted static scan, not a guarantee that no sensitive content exists."

@@ -25,11 +25,11 @@
 \title{A Certificate-Based Conditional Lower Bound of 21\newline
 for $3\times3$ Matrix Multiplication over $\mathbb F_2$}
 \author{Review draft}
-\date{7 September 2026\quad---\quad{}Prepared for independent review}
+\date{7 September 2026 (revised after independent audit)}
 \begin{document}
 \maketitle
 \begin{abstract}
-We describe a finite, checkable reduction from 110 explicitly enumerated restricted tensor-rank lower bounds to a lower bound of 21 for the exact bilinear complexity of $3\times3$ matrix multiplication over $\mathbb F_2$. Restriction inequalities first force the first-factor forms in a hypothetical 20-term decomposition to be distinct and singular. The remaining cases are excluded using two direct restrictions and seven exact counting certificates, comprising 9,683 nodes and 4,845 leaves. A portable Python checker rederives every retained counting inequality, checks physical tensor symmetries, enumerates all 43,071 unordered rank-two pairs, and verifies exact branch and rational certificates. Crucially, that checker \emph{assumes} the 110 restricted-rank premises: it does not replay their original proofs. The conditional theorem established by the portable artifact is distinguished throughout from the broader local campaign's reported complete proof chain. This document is a review draft, not a claim of external acceptance or a novelty determination.
+We describe a finite, checkable reduction from 110 explicitly enumerated restricted tensor-rank lower bounds to a lower bound of 21 for the exact bilinear complexity of $3\times3$ matrix multiplication over $\mathbb F_2$. Restriction inequalities first force the first-factor forms in a hypothetical 20-term decomposition to be distinct and singular. The remaining cases are excluded using two direct restrictions and seven exact counting certificates, comprising 9,683 nodes and 4,845 leaves. A portable Python checker rederives every retained counting inequality, checks physical tensor symmetries, enumerates all 43,071 unordered rank-two pairs, and verifies exact branch and rational certificates. The theorem is stated conditionally on the 110 premises so that the assumption boundary is explicit; 105 of them are Wang's published bounds and five are strengthened by one. The accompanying repository replays all 110 from Wang's certificate archive and from the strengthened-bound evidence in a single command, and an independent audit re-derived the strengthened bounds and the global reduction with separately written code. This document is a review draft, not a claim of external acceptance or a novelty determination.
 \end{abstract}
 
 \section{Statement, attribution, and review boundary}
@@ -71,9 +71,9 @@ The finite case verification in the proof is supplied by the seven counting cert
 \end{theorem}
 
 \paragraph{What is, and is not, certified here.}
-The portable checker verifies the implication in Theorem~\ref{thm:main}. It does not certify Assumption~\ref{ass:premises}. Of its 110 listed bounds, 105 are no stronger than the pinned published catalog bounds; five exceed that pinned baseline, at indices $70,423,486,488,494$. Both classes remain explicit assumptions of the portable replay. Publication of a premise elsewhere and local records of its verification are evidence about that premise, not an execution of its proof inside this checker.
+The compact checker verifies the implication in Theorem~\ref{thm:main}; on its own it does not certify Assumption~\ref{ass:premises}. Of the 110 listed bounds, 105 are no stronger than the pinned published catalog bounds; five exceed that baseline, at indices $70,423,486,488,494$. The five strengthened values are established, together with six intermediate strengthenings (indices $206,313,444,487,490,491$), by the restricted-chain replay described in Section~\ref{sec:reproduction}: a Koszul flattening for index 70, a hyperplane-averaging argument for 206, exact interval-count trees for 313, 423, 444 and the five seven-dimensional entries, and a binary orbital tree for 494. The published bounds are established by replaying Wang's certificate archive. The repository's \texttt{full} mode performs both replays and then requires every premise to be no stronger than what was just established, so that the unconditional statement rests only on Wang's archive and the evidence files shipped here.
 
-The larger local campaign reports a completed chain of published-certificate replays, recovered restricted certificates, and global case checks supporting an unconditional claim. The frozen campaign record is broader than the portable reduction. A reviewer wishing to validate that unconditional claim must also inspect and independently replay the omitted restricted-bound chain. This draft does not equate a successful portable run with that stronger task, nor does it claim external peer review.
+An independent audit on 7 September 2026 re-derived the strengthened chain and the global reduction with separately written code and found no error; its report and code are included in the repository. Neither the campaign nor the audit is human peer review, and no external acceptance is claimed.
 
 \section{Restriction inequalities and the Boolean domain}
 A rank-$r$ decomposition of $T$ has the form
@@ -269,23 +269,22 @@ Assumption~\ref{ass:premises} supplies the unrestricted lower bound 20 and every
 \end{proof}
 
 \section{Reproduction and evidence boundaries}\label{sec:reproduction}
-The default portable reduction contains a standard-library Python checker, a compressed JSON payload, a readable premise list, source provenance and integrity manifests. Its replay requires no LP solver, custom native binary, network access, or original campaign path. From the repository root, run:
+The repository contains standard-library Python checkers, a compressed JSON payload for the global step, the raw evidence for the strengthened restricted bounds, Wang's pinned certificate archive, a readable premise list, and integrity manifests. No LP solver, package installation, network access or original campaign path is needed. Python 3.10 or newer is required; the assertion-disabling \texttt{-O} mode is rejected. From the repository root:
 \begin{verbatim}
-python3 verification/verify.py
+python3 verification/verify.py --mode full
 \end{verbatim}
-Python 3.10 or newer is required. The checker also runs when invoked by an absolute path from another working directory. Python's assertion-disabling \texttt{-O} mode is rejected.
+This compiles the bundled C++17 kernel, replays all 496 entries of Wang's certificate from an empty ledger, replays the eleven strengthened bounds in dependency order using only bounds already established, checks every compact premise against the resulting map, and then runs two independently written global checkers. It reports \texttt{full\_rank21\_proof\_replayed: true} and takes about seventy seconds.
 
-A successful default run explicitly reports
-\begin{quote}\small\ttfamily
-lower\_bound\_premises\_replayed: false
-\end{quote}
-This is part of the intended contract, not a missing success flag. Additional entry points are:
+The individual stages are available separately:
 \begin{verbatim}
+python3 verification/verify.py                    # conditional global step
+python3 verification/verify.py --mode restricted  # eleven strengthened bounds
+python3 verification/verify.py --mode independent-global
 python3 verification/verify.py --mode independent-counts
 python3 verification/verify.py --mode controls
-python3 verification/verify.py --mode published --seconds 600
+python3 verification/verify.py --mode published
 \end{verbatim}
-The published mode replays the 496-entry pinned published catalog; that separate mode requires a C++ compiler and its bundled certificate archive. It does not establish the five strengthened premises in this draft. The repository document \path{docs/VERIFICATION.md} describes the mode-specific requirements and remaining strengthened-premise integration boundary. Appendix~\ref{app:premises} and the readable \path{PREMISES.json} enumerate the assumptions. Hashes authenticate a particular artifact snapshot; they are not mathematical evidence of a lower bound by themselves.
+The default mode deliberately reports \texttt{lower\_bound\_premises\_replayed: false}: it checks the implication of Theorem~\ref{thm:main} and nothing more. The repository document \path{docs/VERIFICATION.md} states what each mode establishes and assumes; \path{docs/RESTRICTED\_CHAIN.md} specifies the reconstruction rules for the strengthened bounds so that a third implementation can be written from the text. Appendix~\ref{app:premises} and the readable \path{PREMISES.json} enumerate the assumptions. Hashes authenticate a particular artifact snapshot; they are not mathematical evidence.
 
 The compact package was replayed after copying and extracting it into a renamed directory, including a run from an unrelated working directory. Malformed-input checks covered missing or weakened critical premises, changed row supports and capacities, singular actions, omitted pair cases, missing markers and branches, incomplete witness coverage, false rational leaves, and damaged compressed data. A separate internal check reconstructed the 9,488 rows and 971 initial propagations with scalar geometry and replayed all seven trees using a different exact-arithmetic implementation. Some code and prior premise infrastructure are shared across the broader campaign; these are internal cross-checks, not external peer review or formal verification of the Python interpreter.
 
@@ -302,10 +301,10 @@ The upstream MIT notice is preserved. Catalog identifiers in this draft refer to
 \section{Limitations and review requests}
 The result concerns exact bilinear tensor rank over $\F$ for one matrix format. It does not establish border rank, a bound over arbitrary fields, the exact rank, an improved asymptotic exponent, or a faster multiplication algorithm. The known upper bound 23 is unchanged.
 
-The principal unresolved task \emph{for a reviewer of the portable package} is to verify all restricted-rank premises from their original certificates and recovered dependencies. The larger campaign reports doing so locally; that report must not be substituted for the omitted replay. Review should also scrutinize the dual-coordinate convention, physical transpose action, direct restrictions, exact leaf rules, and the distinction in Remark~\ref{rem:subset}. The project has not established priority against all unpublished work, secured external acceptance, or demonstrated prize eligibility or commercial value.
+The remaining gaps are external rather than internal. Every checker that has been run against Wang's certificate archive was written inside this project or by Wang; an implementation of that certificate format by an outside party would close the largest one. The finite counting layer (rows, trees, rational duals) is well suited to formalization in a proof assistant and has not been formalized. Review should also scrutinize the dual-coordinate convention, physical transpose action, direct restrictions, exact leaf rules, and the distinction in Remark~\ref{rem:subset}. The project has not established priority against all unpublished work, secured external acceptance, or demonstrated prize eligibility or commercial value.
 
 \paragraph{AI-assistance disclosure.}
-OpenAI Codex agents substantially assisted literature lookup, programming, certificate generation, mathematical exposition, and internal review in this project. Separate agents performed some separately implemented checks. Their organizational separation does not imply statistical independence, external expertise, or a replacement for human mathematical review. The author field is deliberately neutral pending confirmation of human authorship, responsibility, and affiliations. No affiliation or external endorsement is asserted.
+OpenAI Codex agents substantially assisted literature lookup, programming, certificate generation, mathematical exposition, and internal review in this project. The independent audit of 7 September 2026, including the restricted-chain replay code now shipped in the repository, was performed by a Claude agent. Agreement between separately written checkers rules out most implementation errors but does not replace human mathematical review. The author field is deliberately neutral pending confirmation of human authorship, responsibility, and affiliations. No affiliation or external endorsement is asserted.
 
 \bibliographystyle{plain}
 \bibliography{references}

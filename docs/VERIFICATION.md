@@ -1,55 +1,79 @@
-# What the portable commands verify
+# What each verification mode establishes
 
-Run from the repository root with Python 3.10 or newer:
-
-```sh
-python3 verification/verify.py
-```
-
-This standard-library command reconstructs the geometry used by seven exact count trees, checks rational inequalities and exhaustive branches, checks retained physical tensor actions, and enumerates all 43,071 rank-two pairs. It verifies 9,683 nodes and 4,845 leaves. **Its conclusion is conditional on 110 explicit restricted-rank lower bounds. It does not prove those premises.** It prints `lower_bound_premises_replayed: false` on success.
-
-The assumptions are readable in [PREMISES.md](../evidence/PREMISES.md), with their annihilator bases in [PREMISES.json](../evidence/PREMISES.json). These distinguish Wang's published bounds from strengthened bounds found in this campaign. Eleven strengthened restrictions occur in the complete dependency chain; some are intermediate rather than direct compact assumptions.
-
-Commands print results and do not write reports unless `--output PATH` is supplied. They make no network requests. Do not use Python `-O`, which disables assertions; the entry point rejects it.
-
-## Independent count arithmetic and failure controls
+All commands run from the repository root with Python 3.10 or newer, use only the standard library, make no
+network requests, and write nothing unless `--output PATH` is given. Python's `-O` flag disables the assertions the
+checkers rely on; the entry point refuses to run under it.
 
 ```sh
-python3 verification/verify.py --mode independent-counts
-python3 verification/verify.py --mode controls
+python3 verification/verify.py --mode MODE
 ```
 
-The first rechecks all seven trees with a separately authored `fractions.Fraction` implementation. It checks integer assignments, propagation, state-preserving permutation witnesses, exhaustive branches and rational inequalities. This mode assumes its row geometry and physical symmetries; run the default mode for those checks. It does not prove any restricted-rank premise.
-
-The second runs the positive compact proof and rejects missing or weakened premises, a missing actual tree branch, and an empty rational dual. These controls invoke mathematical checking in memory rather than merely triggering a file hash mismatch.
-
-The default integer-LCM implementation and the Fraction implementation are separate local implementations of the same proof rules. The compact geometry checker was written in the campaign. This is not outside peer review or an independent mathematical discovery.
-
-## Fresh published-certificate replay
+## The one-command proof
 
 ```sh
-python3 verification/verify.py --mode published --seconds 600
+python3 verification/verify.py --mode full
 ```
 
-This optional command requires a C++17 compiler (`c++`, `clang++`, `g++`, or `CXX`). It requires no Python packages. It compiles the included native source into a temporary directory, starts an empty verification ledger, and replays all 496 entries of Wang's pinned public certificate. Compilation products are deleted on exit. The native kernel is single-threaded. The time limit applies to mathematical replay; compilation has a separate 60-second cap.
+Runs, in order:
 
-The packaged replay was tested locally: all 496 entries passed in approximately 36 seconds including compilation. This establishes the published lower bounds, including the published global bound 20. **It does not establish the eleven strengthened restrictions or turn the conditional compact result into a complete portable proof of 21.** The output explicitly reports `strengthened_restricted_premises_replayed: false` and `full_rank21_proof_replayed: false`.
+1. **Published replay.** Compiles `verification/published/native_checker.cpp` into a temporary directory, starts an
+   empty ledger, and verifies all 496 entries of Wang's pinned certificate. Every bound in the rest of the run comes
+   from this ledger, not from the catalog text file.
+2. **Restricted chain.** `verification/restricted/chain.py` re-derives the eleven strengthened bounds from
+   `evidence/restricted/`, in dependency order, using only bounds already established at each step.
+3. **Premise binding.** Every one of the 110 premises of the compact payload must be no stronger than the bound just
+   established for the same catalog entry, and its annihilator must span the same subspace as the catalog constraints.
+4. **Global reduction.** Both global checkers run: the campaign's `verification/compact/check.py` and the audit's
+   `verification/restricted/global_check.py`.
 
-The native checker is the campaign's previously audited implementation; packaging it does not provide another independently authored checker. The separate external Beuchert checker is not used: a bounded audit found that its unmodified backtracking traversal accepted incomplete payloads. This issue is not a rejection of Wang's certificate. The native implementation rejected equivalent empty and truncated controls.
+A successful run prints `"full_rank21_proof_replayed": true`. Needs a C++17 compiler; about 70 seconds.
 
-## Remaining full-replay boundary
+## Individual modes
 
-Review-critical inputs for all strengthened restrictions are in `evidence/restricted/` as gzip-compressed JSON:
+| Mode | Establishes | Assumes | Needs |
+|---|---|---|---|
+| `compact` (default) | If the 110 listed restricted bounds hold, rank ≥ 21. Reconstructs row geometry, checks 3,427 physical actions on the tensor, enumerates all 43,071 rank-two pairs, replays 7 trees (9,683 nodes) | The 110 premises in `evidence/PREMISES.md` | Python |
+| `restricted` | The eleven strengthened bounds: 70→14, 206→15, 313→17, 423→18, 444→18, 486–491→19, 494→20 | Wang's published bounds as printed in the pinned catalog file | Python |
+| `independent-global` | Same theorem as `compact`, via the audit's independently written checker, with premises bound to catalog bounds plus the replayed upgrades | Catalog file bounds | Python |
+| `independent-counts` | The seven global trees, replayed with `fraction_tree.py` (separate exact-arithmetic implementation) | Row geometry and symmetries from the payload | Python |
+| `controls` | Four corrupted payloads are rejected by the compact checker | – | Python |
+| `published` | All 496 catalog bounds, including the global bound 20 | – | C++17 |
+| `full` | Rank ≥ 21 with nothing assumed beyond Wang's certificate archive | – | C++17 |
 
-- Index 70: its basis is in the published catalog; the campaign uses an explicit Koszul flattening of rank 27 to establish lower bound 14. A portable Koszul verifier is not yet included.
-- Index 206: the 15 hyperplane witnesses and Koszul ranks used in the bound 15.
-- Index 313: all 372 restriction rows and the seven-node interval-count proof for bound 17.
-- Indices 423 and 444: six-dimensional geometry and exact count proofs for bounds 18.
-- Indices 486, 487, 488, 490 and 491: seven-dimensional geometry and exact count proofs for bounds 19.
-- Index 494: singleton capacities, reduced geometry, physical symmetries and the 169-node orbital tree for bound 20.
+Two further scripts:
 
-The missing release component is a portable executable that reconstructs and validates these upgraded geometries/Koszul maps, rechecks their exact trees, closes their dependencies against a freshly replayed published ledger, and binds the resulting bounds to the compact assumptions. Earlier local checks performed that work across campaign scripts; saved local pass reports are not substituted for this missing portable integration.
+- `python3 verification/audit_controls.py` corrupts the global payload in 17 ways and requires the independent
+  checker to reject each, then computes the minimal set of upgrades each strengthened bound needs.
+- `python3 verification/test_release.py` copies `verification/` and `evidence/` to a temporary directory, reruns the
+  default mode there, checks that `-O` is refused, and scans for machine-local paths.
 
-The compressed evidence omits historical status-ledger fields and machine-local provenance paths while preserving mathematical geometry and proof trees. Original and packaged SHA-256 hashes are recorded in `evidence/restricted/provenance.json`. Large discovery tables and unsuccessful search traces are unnecessary for the compact proof and are omitted. Hashes establish integrity and lineage, not mathematical validity.
+## Independence of the implementations
 
-No Linux/Windows compatibility run has yet been performed. The portable Python command has been relocated and tested on the local macOS environment; the native source uses standard C++17 and builds its library for the current platform.
+| Component | Written by | Shares code with |
+|---|---|---|
+| `compact/check.py`, `compact/integer_tree.py` | the original campaign | nothing outside `compact/` |
+| `fraction_tree.py` | the original campaign (a separate audit round) | nothing |
+| `published/published_checker.py`, `published/native_checker.cpp` | the original campaign | each other (same rule set, two languages) |
+| `restricted/core.py`, `restricted/chain.py`, `restricted/global_check.py` | the 2026-09-07 audit | nothing in the repository |
+
+Two implementations agreeing on every certificate is strong evidence against checker bugs. It is not the same as an
+outside party having implemented Wang's certificate format, which remains the largest open gap.
+
+## Evidence files
+
+`evidence/restricted/` holds gzip-compressed JSON: coordinate-dual bases, physical bases, orbit witnesses and exact
+proof trees for each strengthened bound. Legacy status-ledger fields and machine paths were removed when packaging;
+`evidence/restricted/provenance.json` records the original and packaged hashes. No checker reads a saved status field.
+`docs/RESTRICTED_CHAIN.md` specifies the reconstruction rules that `restricted/chain.py` implements.
+
+Hashes in `verification/RELEASE_MANIFEST.json` and the compact manifest establish integrity of a snapshot; they are
+not mathematical evidence. Regenerate the release manifest after editing verification files:
+
+```sh
+python3 scripts/update_manifest.py
+```
+
+## Platforms
+
+Tested on macOS (Apple clang, Python 3.14). The Python modes are pure standard library; the C++ source is standard
+C++17 and builds a shared library for the current platform. Linux and Windows have not been exercised.

@@ -1,30 +1,56 @@
-# Start here for independent review
+# Reviewer guide
 
-The purpose of review is to establish whether the proposed rank 21 lower bound follows, not to reproduce a positive status string. Please report concrete errors, missing premises, unsupported transitions and verification gaps before discussing significance.
+The purpose of review is to establish whether rank 21 follows, not to reproduce a success message. Report concrete
+errors, missing premises, unsupported transitions and verification gaps before discussing significance.
 
-## Target and boundaries
+## Where to start
 
-The target is exact bilinear tensor rank for3×3 matrix multiplication over F2. Additions and scalar linear maps are not counted as bilinear products. A bound here is not a bound on every arbitrary Boolean program or on border rank.
+1. Read [README.md](../README.md) for context and [CLAIM_STATUS.md](CLAIM_STATUS.md) for the exact boundary.
+2. Read the paper: [paper/main.tex](../paper/main.tex). Sections 2 to 5 contain every mathematical step; the appendix
+   lists the 110 premises with their annihilator bases.
+3. Run `python3 verification/verify.py --mode full` in a fresh checkout and read
+   [VERIFICATION.md](VERIFICATION.md) to see what each stage did and did not establish.
+4. Read the checkers. The primary ones are `verification/compact/check.py` (150 lines) and
+   `verification/restricted/chain.py` (170 lines). The [2026-09-07 audit](audits/2026-09-07-independent-audit.md)
+   records one full pass through this process.
 
-The portable compact theorem is conditional on110 specified restricted-rank premises. Their identities are mathematical: an annihilator subspace H given by nine-bit row-major matrices, and a proposed lower bound on the first-slot restriction to ann(H). Catalog numbers alone are not definitions. Distinguish published baseline bounds from the strengthened local bounds.
+## Definitions to hold fixed
 
-Read the paper, inspect the premise table and verifier implementation, and run the documented commands in a fresh checkout. Do not infer a full proof from a saved ledger or matching digest. State the code and inputs you independently implemented versus reused.
+- The target is exact bilinear tensor rank of $\operatorname{tr}(ABC)$ over F₂ for $3\times3$ matrices. Additions and
+  scalar maps are free. This is not border rank and not a bound over other fields.
+- A premise is a mathematical object: an annihilator subspace $H$ of $3\times3$ matrices over F₂ (9-bit row-major
+  encoding), and a lower bound on the rank of the tensor restricted, in its first input, to $\operatorname{ann}(H)$.
+  Catalog indices are labels, not definitions.
+- "Published" means Wang's pinned catalog value; "strengthened" means the campaign's higher value. Both are replayed
+  by `--mode full`; neither is assumed from a saved flag.
 
-## Specific proof obligations
+## Proof obligations to check
 
-1. The trace pairing identifies this trilinear tensor with matrix multiplication. Restricting the first slot kills every first factor in H, counting repetitions before any binary reduction.
-2. The global lower bound 20allows reduction to a minimal20-term decomposition. The hyperplane bounds imply multiplicity at most1; strengthened catalog 494 excludes invertible first forms. These statements are specific to the assumed length 20.
-3. Left/right invertible actions and transpose actions genuinely preserve the tensor. Check the first-factor dual convention and the interchange of B/C in the transpose case.
-4. Normalizations cover all rank-one forms, all rank-two forms, and every unordered pair of distinct rank-two forms. There are no unexamined symmetry classes.
-5. Marker contributions are subtracted from each capacity before projecting variables. Initial zero propagation uses an actually saturated inequality and cannot delete a feasible first factor otherwise.
-6. A branch covers both no selected orbit member and at least one selected member, with a valid witness for every member. The action must preserve the current selected/zero sets and fixed markers. A physical symmetry must map actual decompositions; any stronger claim about an arbitrary reduced binary relaxation needs a separate justification.
-7. Every rational leaf uses nonnegative weights with positive denominators, valid variable bounds and a coefficient sum that dominates the target objective. Its exact upper bound is strictly smaller than the required count. No tolerance or floating-point output establishes infeasibility.
-8. All seven global trees and both direct pair contradictions use true lower-bound premises. Review the full dependency argument separately from the global composition.
-9. Every prerequisite checker covers all required branches and rejects exhausted/truncated proof data. An observed defect in an external checker makes this an actual concern, not a hypothetical test case.
-10. Novelty depends on prior literature and attribution as well as correctness. Search for this precise field, format, rank notion and lower bound, including unpublished manuscripts if available.
+1. The trace pairing identifies the tensor with $\langle3,3,3\rangle$. Restricting the first input to
+   $\operatorname{ann}(H)$ kills exactly the terms whose first factor lies in $H$, counting repetitions.
+2. The global bound 20 allows reduction to a minimal 20-term decomposition. The hyperplane premises give multiplicity
+   at most 1; strengthened entry 494 excludes invertible first factors. Both statements are specific to length 20.
+3. The coefficient actions $U\mapsto LUR$ and $U\mapsto LU^{\mathsf T}R$ are induced by symmetries of the tensor
+   (the transpose case swaps the second and third inputs). Check the dual convention.
+4. The normal forms cover all rank-one forms, all rank-two forms, and every unordered pair of distinct rank-two forms.
+5. Marker contributions are subtracted before projecting; an initial zero propagation must cite a saturated row.
+6. Every orbit branch has both children and a valid witness for every orbit member preserving selected, zero and marker
+   sets. Witnesses act on actual decompositions; the retained row subset need not be symmetry closed.
+7. Rational leaves: nonnegative weights, positive denominators, coefficient of every variable at least 1, exact upper
+   bound strictly below the target. No floating point anywhere in acceptance.
+8. Each strengthened bound is built only from bounds established before it (see the dependency map printed by
+   `audit_controls.py`).
+9. Wang's leaf rule: at a leaf, the chosen forms plus the child bound must reach the parent bound; the child is a
+   strict restriction in the catalog; the orbit map is a symmetry. Term splitting makes "exactly $b-1$ terms with
+   nonzero first factors" a safe assumption.
+10. Priority depends on literature as well as correctness.
 
-## Suggested review output
+## Reporting
 
-Provide the checkout commit, runtime and environment, commands run, inputs hashed, and a list of independently established facts. For each concern give the file/line or mathematical step, a minimal counterexample when possible, and whether it invalidates the claim or only limits the evidence. End with one of: error found; conditional argument verified; prerequisites partially verified; full argument independently verified. Do not collapse these outcomes into a generic PASS.
+State the checkout commit, environment, commands run, and which code you implemented yourself versus reused. For each
+concern give the file and line or the mathematical step, a minimal counterexample if possible, and whether it
+invalidates the claim or only limits the evidence. End with exactly one of: *error found*, *conditional argument
+verified*, *prerequisites partially verified*, *full argument independently verified*.
 
-Write new outputs to `reports/local/`. Original certificates and recorded evidence should remain unchanged. A reviewer agent can begin with: “Review this repository as a skeptical computational algebra referee. Prioritize soundness, prerequisite coverage and incorrect claims of independence. Do not modify certificates. Follow docs/REVIEW_GUIDE.md and report exact scope.”
+Write outputs under `reports/local/` (ignored by git) or, for a record meant to be kept, under `docs/audits/`.
+Do not modify certificates or evidence files; put proposed fixes in separate commits and explain their effect on soundness.

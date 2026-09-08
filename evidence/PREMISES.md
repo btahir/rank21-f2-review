@@ -1,6 +1,6 @@
 # Explicit restricted-rank premises
 
-The compact checker assumes these 110 bounds. The optional published replay checks the original Wang bounds; it does not silently substitute the strengthened values. The campaign has eleven upgrades in its dependency chain: 70: 13 → 14, 206: 14 → 15, 313: 16 → 17, 423: 17 → 18, 444: 17 → 18, 486: 18 → 19, 487: 18 → 19, 488: 18 → 19, 490: 18 → 19, 491: 18 → 19, 494: 19 → 20. Some upgrades are intermediate dependencies rather than direct compact premises.
+The compact checker assumes these 110 bounds; `verify.py --mode full` establishes all of them before running it. The published replay checks the original Wang bounds; it does not silently substitute the strengthened values. The campaign has eleven upgrades in its dependency chain (nine are needed, see `docs/RESTRICTED_CHAIN.md`): 70: 13 → 14, 206: 14 → 15, 313: 16 → 17, 423: 17 → 18, 444: 17 → 18, 486: 18 → 19, 487: 18 → 19, 488: 18 → 19, 490: 18 → 19, 491: 18 → 19, 494: 19 → 20. Some upgrades are intermediate dependencies rather than direct compact premises.
 
 | Catalog index | Assumed bound | Published bound | Source of assumed value |
 |---:|---:|---:|---|

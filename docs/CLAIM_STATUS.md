@@ -1,48 +1,49 @@
-# What is claimed, observed and unfinished
+# Claim status
 
-## Mathematical target
+## The claim
 
-Candidate full result: `rank_F2(<3,3,3>) >= 21`.
+$\operatorname{R}_{\mathbb F_2}(\langle 3,3,3\rangle) \ge 21$: no bilinear algorithm with 20 or fewer multiplications
+computes the product of two 3×3 matrices over the two-element field.
 
-Portable verified implication: the110 listed restricted-rank premises imply that result. The paper states the conditional implication explicitly and distinguishes it from the larger local campaign's full proof claim.
+Not claimed: the exact rank (21, 22 or 23 remain possible), any bound over other fields or for border rank, an improved
+exponent of matrix multiplication, a faster practical algorithm, external acceptance, or priority.
 
-The local strengthened restricted bounds have catalog indices and values:
+## Structure of the evidence
 
-| Index | Bound |
-|---:|---:|
-|70|14|
-|206|15|
-|313|17|
-|423|18|
-|444|18|
-|486|19|
-|487|19|
-|488|19|
-|490|19|
-|491|19|
-|494|20|
+| Layer | Content | Verified by |
+|---|---|---|
+| Wang's catalog | 496 restricted lower bounds with certificates, including the global bound 20 | Wang's published framework; replayed here by the campaign's C++ and Python checkers |
+| Strengthened bounds | Eleven catalog entries raised by one: 70, 206, 313, 423, 444, 486, 487, 488, 490, 491, 494 | Campaign checkers (original), then the 2026-09-07 audit with independent code |
+| Global reduction | 110 premises ⇒ rank ≥ 21, via 7 exact trees | Campaign checker, separate fraction replay, and the audit's independent checker |
 
-These are local improvements; they must not be attributed to Wang as already published results. The remaining premise values and underlying geometry draw on Wang's pinned catalog. Some improvements support others transitively rather than appearing directly in the final110premise list.
+The eleven strengthened values are local improvements and must not be attributed to Wang. Only nine are needed for the
+theorem: 206 and 313 are verified but not used by any later step.
 
-## Local verification history
+## Verification history
 
-The source campaign records fresh published-certificate replays, reconstruction of restricted improvements, independent local checks of finite geometry and exact count trees, and an aggregate integrity/composition check over179linked files. Its global seven-tree replay checked9,683nodes and 4,845 leaves. The compact package was subsequently checked with a separate set/Fraction tree implementation and scalar row reconstruction.
+- Original campaign (2026): fresh published-certificate replays, construction of the strengthened bounds, local
+  checks of geometry and trees, aggregate integrity check over 179 linked files. Discovery used floating-point LP and
+  symmetry-guided search; all final certificates use exact integer or rational arithmetic.
+- 2026-09-07 independent audit ([report](audits/2026-09-07-independent-audit.md)): every strengthened bound
+  re-derived from the raw evidence with newly written code; the global reduction re-verified with an independently
+  written checker that rejects 17 mutation controls; two documentation errors found and fixed; no mathematical error found.
+  Its code now ships as `verification/restricted/` and runs inside `verify.py --mode full`.
 
-Those runs are local observations. The published prerequisite replays share a Python/native checker implementation. Multiple agents, code reviews and matching results do not establish external mathematical consensus or eliminate common assumptions.
+Both the campaign and the audit were performed by LLM agents. Agreement between them rules out most implementation
+bugs but is not human peer review.
 
-Discovery used floating-point LP and symmetry-guided searches. The final global certificates use exact integer/rational arithmetic. Failed searches and large discovery tables are retained in the original lab; they are not all part of this review repository and are not required by the compact implication.
+## External checker note
 
-## External checker defect
-
-A Beuchert standalone implementation obtained from Zenodo record 20752782 silently accepted exhausted backtracking leaf data. Local controls showed acceptance of an empty proof with an impossible claimed bound 1000, and acceptance of a genuine13-leaf proof with its last required leaf removed. A separate copy changed the exhausted-data return into rejection and then verified only published entries 0–8 from an empty rank map. The native checker used in the main campaign rejected equivalent malformed inputs.
-
-This is evidence against using that unmodified external implementation as independent certification. It does not, by itself, refute Wang's mathematical certificate or validate every rule in the corrected checker. This repository does not rely on the unmodified external implementation as a full verification. The original external code is not redistributed here.
+A standalone checker for Wang's format obtained from Zenodo record 20752782 was found, during the campaign, to accept
+exhausted backtracking data: it accepted an empty proof with a claimed bound of 1000 and a genuine 13-leaf proof with
+its last leaf removed. The campaign's native checker rejected the same inputs. That code is not used or redistributed
+here. The observation is evidence against relying on that implementation; it is not evidence against Wang's certificate.
 
 ## Outstanding gates
 
-- Complete independent verification of all prerequisite mathematics, including dependency resolution and branch coverage.
-- Reproduction by a reviewer outside the original agent workflow.
-- Confirmation of novelty and priority; the reviewed Wang v11 paper states20, but absence of another result from search is not proof of priority.
-- Final human author metadata, license choices for original material and responsibility for the manuscript before scholarly submission.
-
-No claim is made of exact rank 21, a bound over arbitrary fields, a border-rank result, an improved asymptotic exponent, faster practical multiplication, prize eligibility or revenue.
+1. A checker for Wang's certificate format written outside this project, run against the pinned archive.
+2. A formal proof of the counting layer (rows, trees, dual certificates) in a proof assistant.
+3. Human mathematical review, ideally including the framework's author.
+4. Novelty and priority: Wang's v11 (29 August 2026) and the upstream README state 20; a web search on 2026-09-07
+   found no published 21. Absence of a search hit is not proof of priority.
+5. Final author metadata and a license for the original material before any submission.

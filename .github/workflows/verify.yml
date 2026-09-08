@@ -1,0 +1,24 @@
+name: verify
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Conditional global step
+        run: python3 verification/verify.py
+      - name: Strengthened restricted bounds
+        run: python3 verification/verify.py --mode restricted
+      - name: Independent global checker
+        run: python3 verification/verify.py --mode independent-global
+      - name: Second tree replay and negative controls
+        run: |
+          python3 verification/verify.py --mode independent-counts
+          python3 verification/verify.py --mode controls
+      - name: Full replay including Wang's certificate
+        run: python3 verification/verify.py --mode full --seconds 900
+      - name: Release checks
+        run: python3 verification/test_release.py

@@ -1,4 +1,9 @@
-# Release audit
+# Release audit (historical snapshot of commit 3c36724)
+
+> This audit describes the initial private-review snapshot. Files and hashes listed below were superseded by the
+> 2026-09-07 changes (integrated restricted-chain replay, rewritten documentation); see
+> [audits/2026-09-07-independent-audit.md](audits/2026-09-07-independent-audit.md) and the regenerated
+> `verification/RELEASE_MANIFEST.json`. The attribution and privacy conclusions still apply.
 
 **Suitable for the intended private review repository. No blocking finding remains in this snapshot.** This is a release-scope audit, not external mathematical acceptance, a novelty decision, or a legal opinion. The machine-readable companion inventories the 65 Git-eligible files inspected before adding these two audit files; future edits require checking the recorded hashes again.
 

@@ -1,6 +1,12 @@
 # Reconstructing the strengthened restricted bounds
 
-This is a specification for reviewing the included evidence, **not an implemented full-replay command or a saved-proof receipt**. Start with a fresh successful `python3 verification/verify.py --mode published` replay. Maintain a map of proved bounds, initially the 496 published values; extend it only after the following checks succeed. Do not seed this map from any JSON `status`, ledger, `verified_bounds`, or claimed-result field.
+This document specifies how the eleven strengthened bounds are rebuilt from the evidence in `evidence/restricted/`.
+It is implemented by `verification/restricted/chain.py` and runs as `python3 verification/verify.py --mode restricted`
+(against the pinned catalog file) or inside `--mode full` (against a fresh replay of Wang's certificate). A reviewer
+who wants a third implementation should follow this text, not the code.
+
+Maintain a map of proved bounds, initially the 496 published values; extend it only after the following checks
+succeed. Do not seed this map from any JSON `status`, ledger, `verified_bounds`, or claimed-result field.
 
 ## Coordinates and the common restriction check
 
@@ -18,7 +24,11 @@ Enumerate at most `2^d` coordinate vectors to reconstruct it. Check independence
 X -> left * (transpose(X) if transpose else X) * inverse(right).
 ```
 
-**The 206 hyperplane evidence uses `right` directly, not `inverse(right)`.** These conventions must not be conflated. Compare spans, not just basis lists.
+**Convention note.** The stored witnesses are not uniform: in the 206 evidence, eight of the fifteen hyperplane
+witnesses match their catalog space only under `inverse(right)` and seven only under `right` directly. Both maps are
+tensor symmetries, so either is acceptable; a checker should try both and require that the mapped subspace equals
+the catalog space exactly. Compare spans, not basis lists. (Earlier versions of this document stated that the 206
+evidence uses `right` directly; that was inaccurate.)
 
 For hypothetical rank `r`, let `c_f` count nonzero first-factor forms `f` in parent coordinates. The valid inequality associated with `H` is
 
@@ -41,7 +51,29 @@ All file names below are relative to `evidence/restricted/`; `.json.gz` means gz
 | 486, 487, 488, 490, 491 ≥ 19 | `006-seven-dimensional__geometry-{index}.json.gz`, `006-seven-dimensional__seven-count-proof-{index}.json.gz` | Reconstruct rows; interval trees at target 18, after the earlier upgrades |
 | 494 ≥ 20 | Five `007-eight-dimensional__*.json.gz` files described below | Singleton capacities, physical symmetries, and binary orbital tree at target 19 |
 
-The seven-dimensional row bound is the maximum of its freshly verified published bound and applicable earlier proved upgrades: 70→14, 206→15, 313→17, 423→18, 444→18. Never use a later target's proposed bound circularly. For six-dimensional evidence, use the published `original_bound`; it deliberately does not assume the seven-dimensional results.
+Row bounds are the maximum of the freshly verified published bound and any upgrade already proved at that point in
+the order above. Never use a later target's proposed bound circularly. Stored variable caps (`caps` / `root_caps`)
+were computed from established bounds in the 313 and seven-dimensional files and from published bounds only in the
+six-dimensional files; both are valid, and a tree that refutes the target with weaker rows also refutes it with
+stronger ones.
+
+Minimal dependencies actually used (computed by `verification/audit_controls.py`):
+
+| Bound | Needs |
+|---|---|
+| 70 ≥ 14 | nothing (Koszul flattening) |
+| 206 ≥ 15 | the Koszul rank 27 of two orbit-70 hyperplanes, computed inline (equivalent to 70 ≥ 14) |
+| 313 ≥ 17 | 70, 206 |
+| 423 ≥ 18, 444 ≥ 18 | nothing beyond published bounds |
+| 486 ≥ 19 | 423 |
+| 487 ≥ 19 | 423, 444 |
+| 488 ≥ 19 | 70, 423, 444 |
+| 490 ≥ 19 | 70, 444 |
+| 491 ≥ 19 | 444 |
+| 494 ≥ 20 | 70, 487, 488, 490, 491 |
+
+The global step uses 70, 423, 486, 488 and 494 directly, so the theorem needs nine of the eleven upgrades; 206 and
+313 are verified but unused.
 
 ## Koszul checks for 70 and 206
 
@@ -81,6 +113,9 @@ The count checker validates zero propagation only for saturated rows. At an `orb
 
 Completeness of the original search tables or enumeration of every possible symmetry is not required for this proof. Every used inequality must be valid, every branch witness must preserve actual tensor decompositions, and the recorded branching must cover all remaining assignments. These are the obligations that matter.
 
-## Final join and current limitation
+## Final join
 
-After all eleven upgrades have been proved, compare every compact premise's catalog index, annihilator span and required bound against the newly constructed map, then run the compact global verifier. That join must fail on any missing or weaker premise. This document specifies that reconstruction; the release does **not** currently implement it as one portable command. The recommended next engineering step is a small fresh verifier following these rules, tested against corrupted orbit maps, missing singleton capacities, incomplete branches and altered rational weights before it is used to support an unconditional portable result.
+After all eleven upgrades have been proved, compare every compact premise's catalog index, annihilator span and
+required bound against the newly constructed map, then run the global verifiers. The join must fail on any missing or
+weaker premise. `verify.py --mode full` implements exactly this, and `audit_controls.py` checks that the independent
+global checker rejects corrupted premises, actions, branches, witnesses and rational weights.

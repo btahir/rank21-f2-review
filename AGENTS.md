@@ -2,7 +2,7 @@
 
 This is a review draft for a candidate tensor-rank lower bound over F2. Prioritize finding errors over confirming the claim. Read README.md, docs/REVIEW_GUIDE.md, docs/VERIFICATION.md, and paper/main.tex.
 
-The compact global certificate is conditional on110 explicitly listed restricted lower bounds. Never describe a successful global replay or hash check as verifying those premises. Distinguish fresh computation, imported historical evidence, source-code review, independent implementation, external peer review, and literature/priority checks.
+The compact global certificate (`--mode compact`) is conditional on 110 explicitly listed restricted lower bounds; `--mode full` replays those premises. Never describe a compact run or a hash check as verifying the premises, and never describe any run as human peer review. Distinguish fresh computation, imported historical evidence, source-code review, independent implementation, external peer review, and literature/priority checks.
 
 Preserve certificate bytes and evidence provenance. Write new results under reports/local/; do not overwrite recorded runs. Put proposed fixes in separate commits and document how they affect soundness. Do not change expected outputs merely to make a test pass.
 
