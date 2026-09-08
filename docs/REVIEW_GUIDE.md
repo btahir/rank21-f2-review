@@ -16,10 +16,10 @@ errors, missing premises, unsupported transitions and verification gaps before d
 
 ## Definitions to hold fixed
 
-- The target is exact bilinear tensor rank of $\operatorname{tr}(ABC)$ over F₂ for $3\times3$ matrices. Additions and
+- The target is exact bilinear tensor rank of $\mathrm{tr}(ABC)$ over F₂ for $3\times3$ matrices. Additions and
   scalar maps are free. This is not border rank and not a bound over other fields.
 - A premise is a mathematical object: an annihilator subspace $H$ of $3\times3$ matrices over F₂ (9-bit row-major
-  encoding), and a lower bound on the rank of the tensor restricted, in its first input, to $\operatorname{ann}(H)$.
+  encoding), and a lower bound on the rank of the tensor restricted, in its first input, to $\mathrm{ann}(H)$.
   Catalog indices are labels, not definitions.
 - "Published" means Wang's pinned catalog value; "strengthened" means the campaign's higher value. Both are replayed
   by `--mode full`; neither is assumed from a saved flag.
@@ -27,7 +27,7 @@ errors, missing premises, unsupported transitions and verification gaps before d
 ## Proof obligations to check
 
 1. The trace pairing identifies the tensor with $\langle3,3,3\rangle$. Restricting the first input to
-   $\operatorname{ann}(H)$ kills exactly the terms whose first factor lies in $H$, counting repetitions.
+   $\mathrm{ann}(H)$ kills exactly the terms whose first factor lies in $H$, counting repetitions.
 2. The global bound 20 allows reduction to a minimal 20-term decomposition. The hyperplane premises give multiplicity
    at most 1; strengthened entry 494 excludes invertible first factors. Both statements are specific to length 20.
 3. The coefficient actions $U\mapsto LUR$ and $U\mapsto LU^{\mathsf T}R$ are induced by symmetries of the tensor

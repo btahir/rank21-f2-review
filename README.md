@@ -2,7 +2,7 @@
 
 **Claim.** The bilinear tensor rank of 3×3 matrix multiplication over the two-element field is at least 21:
 
-$$\operatorname{R}_{\mathbb F_2}(\langle 3,3,3\rangle) \ge 21 .$$
+$$\mathrm{R}_{\mathbb F_2}(\langle 3,3,3\rangle) \ge 21 .$$
 
 **Status.** Research draft. The complete argument is machine-checked by two independently written verifiers in this
 repository, replayable from source in about a minute with only Python and a C++ compiler. It has not been peer

@@ -2,7 +2,7 @@
 
 ## The claim
 
-$\operatorname{R}_{\mathbb F_2}(\langle 3,3,3\rangle) \ge 21$: no bilinear algorithm with 20 or fewer multiplications
+$\mathrm{R}_{\mathbb F_2}(\langle 3,3,3\rangle) \ge 21$: no bilinear algorithm with 20 or fewer multiplications
 computes the product of two 3×3 matrices over the two-element field.
 
 Not claimed: the exact rank (21, 22 or 23 remain possible), any bound over other fields or for border rank, an improved
